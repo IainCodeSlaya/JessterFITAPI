@@ -1,0 +1,3138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="JessterFITdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Access_Functionality">
+          <Key>
+            <PropertyRef Name="Access_Func_ID" />
+          </Key>
+          <Property Name="Access_Func_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Access_Level_ID" Type="int" Nullable="false" />
+          <Property Name="Functionality_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Access_Level">
+          <Key>
+            <PropertyRef Name="Access_Level_ID" />
+          </Key>
+          <Property Name="Access_Level_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Access_Level_Desc" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="Booking_ID" />
+          </Key>
+          <Property Name="Booking_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Booking_Type_ID" Type="int" />
+          <Property Name="Booking_Status_ID" Type="int" />
+          <Property Name="Employee_Slot_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Booking_Slot">
+          <Key>
+            <PropertyRef Name="Booking_Slot_ID" />
+          </Key>
+          <Property Name="Booking_Slot_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Booking_Slot_Date" Type="date" Nullable="false" />
+          <Property Name="Booking_Slot_Start" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Booking_Slot_End" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Booking_Slot_Venue" Type="varchar" MaxLength="120" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Booking_Status">
+          <Key>
+            <PropertyRef Name="Booking_Status_ID" />
+          </Key>
+          <Property Name="Booking_Status_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Booking_Status_Desc" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Booking_Type">
+          <Key>
+            <PropertyRef Name="Booking_Type_ID" />
+          </Key>
+          <Property Name="Booking_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Booking_Type_Desc" Type="varchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Challenge">
+          <Key>
+            <PropertyRef Name="Challenge_ID" />
+          </Key>
+          <Property Name="Challenge_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Challenge_Start_Date" Type="date" Nullable="false" />
+          <Property Name="Challenge_End_Date" Type="date" Nullable="false" />
+          <Property Name="Challenge_Amount" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="Challenge_Prize" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Challenge_Status_ID" Type="int" />
+          <Property Name="Challenge_Type_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Challenge_Exercise_Plan">
+          <Key>
+            <PropertyRef Name="Challenge_ID" />
+            <PropertyRef Name="Exercise_Plan_ID" />
+          </Key>
+          <Property Name="Challenge_ID" Type="int" Nullable="false" />
+          <Property Name="Exercise_Plan_ID" Type="int" Nullable="false" />
+          <Property Name="Challenge_Month_Number" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Challenge_Pay_Status">
+          <Key>
+            <PropertyRef Name="Chal_Pay_Status_ID" />
+          </Key>
+          <Property Name="Chal_Pay_Status_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Chal_Pay_Status_Desc" Type="varchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Challenge_Payment">
+          <Key>
+            <PropertyRef Name="Challenge_Pay_ID" />
+          </Key>
+          <Property Name="Challenge_Pay_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Challenge_Pay_Date" Type="date" Nullable="false" />
+          <Property Name="Challenge_Pay_Amount" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="Client_Challenge_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Challenge_Status">
+          <Key>
+            <PropertyRef Name="Challenge_Status_ID" />
+          </Key>
+          <Property Name="Challenge_Status_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Challenge_Status_Desc" Type="varchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Challenge_Type">
+          <Key>
+            <PropertyRef Name="Challenge_Type_ID" />
+          </Key>
+          <Property Name="Challenge_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Challenge_Type_Desc" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Challenge_Details" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Client_ID" />
+          </Key>
+          <Property Name="Client_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Client_Name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Client_Surname" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Client_Contact" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Client_Height" Type="int" Nullable="false" />
+          <Property Name="Date_of_Birth" Type="date" Nullable="false" />
+          <Property Name="Subscription_Balance" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="Client_Acc_Stat_ID" Type="int" />
+          <Property Name="User_ID" Type="int" />
+          <Property Name="Gender_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Client_Account_Status">
+          <Key>
+            <PropertyRef Name="Client_Acc_Stat_ID" />
+          </Key>
+          <Property Name="Client_Acc_Stat_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Client_Acc_Stat_Desc" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client_Challenge">
+          <Key>
+            <PropertyRef Name="Client_Challenge_ID" />
+          </Key>
+          <Property Name="Client_Challenge_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Client_ID" Type="int" Nullable="false" />
+          <Property Name="Challenge_ID" Type="int" Nullable="false" />
+          <Property Name="Chal_Reference_Number" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Chal_Pay_Status_ID" Type="int" />
+          <Property Name="Booking_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Client_Injury">
+          <Key>
+            <PropertyRef Name="Client_Injury_ID" />
+          </Key>
+          <Property Name="Client_Injury_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Client_ID" Type="int" Nullable="false" />
+          <Property Name="Injury_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client_Plan">
+          <Key>
+            <PropertyRef Name="Client_Plan_ID" />
+          </Key>
+          <Property Name="Client_Plan_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Client_ID" Type="int" Nullable="false" />
+          <Property Name="Exercise_Plan_ID" Type="int" Nullable="false" />
+          <Property Name="Plan_Reference_Number" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Payment_Status_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Company_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Company_Name" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Company_Address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Company_Register_No" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Company_Contact" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Account_Name" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Acount_Number" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Account_Type" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Account_Branch" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Account_Bramch_Code" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Owner_Email" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Day">
+          <Key>
+            <PropertyRef Name="Day_ID" />
+          </Key>
+          <Property Name="Day_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Day_Type" Type="varchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Day_Workout">
+          <Key>
+            <PropertyRef Name="Day Workout_ID" />
+          </Key>
+          <Property Name="Day Workout_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Workout_Set_ID" Type="int" Nullable="false" />
+          <Property Name="Exercise_Plan_Day_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Employee_ID" />
+          </Key>
+          <Property Name="Employee_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Employee_Name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Employee_Surname" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Employee_Contact" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Employee_Birth_Date" Type="date" Nullable="false" />
+          <Property Name="Employee_Type_ID" Type="int" />
+          <Property Name="User_ID" Type="int" />
+          <Property Name="Gender_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Employee_Slot">
+          <Key>
+            <PropertyRef Name="Employee_Slot_ID" />
+          </Key>
+          <Property Name="Employee_Slot_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Employee_ID" Type="int" Nullable="false" />
+          <Property Name="Booking_Slot_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee_Type">
+          <Key>
+            <PropertyRef Name="Employee_Type_ID" />
+          </Key>
+          <Property Name="Employee_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Employee_Type_Desc" Type="varchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Exercise">
+          <Key>
+            <PropertyRef Name="Exercise_ID" />
+          </Key>
+          <Property Name="Exercise_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Exercise_Name" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Exercise_Description" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Exercise_Type_ID" Type="int" Nullable="false" />
+          <Property Name="Exercise_Body_Type_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Exercise_Body_Type">
+          <Key>
+            <PropertyRef Name="Exercise_Body_Type_ID" />
+          </Key>
+          <Property Name="Exercise_Body_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Exercise_Body_Desc" Type="varchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Exercise_Plan">
+          <Key>
+            <PropertyRef Name="Exercise_Plan_ID" />
+          </Key>
+          <Property Name="Exercise_Plan_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Exercise_Plan_Name" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="Exercise_Plan_Type_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Exercise_Plan_Day">
+          <Key>
+            <PropertyRef Name="Exercise_Plan_Day_ID" />
+          </Key>
+          <Property Name="Exercise_Plan_Day_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Exercise_Plan_ID" Type="int" Nullable="false" />
+          <Property Name="Day_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Exercise_Plan_Type">
+          <Key>
+            <PropertyRef Name="Exercise_Plan_Type_ID" />
+          </Key>
+          <Property Name="Exercise_Plan_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Plan_Type_Description" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Plan_Type_Price" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Exercise_Set">
+          <Key>
+            <PropertyRef Name="Exercise_Set_ID" />
+          </Key>
+          <Property Name="Exercise_Set_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="REP" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="Exercise_ID" Type="int" Nullable="false" />
+          <Property Name="Set_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Exercise_Type">
+          <Key>
+            <PropertyRef Name="Exercise_Type_ID" />
+          </Key>
+          <Property Name="Exercise_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Exercise_Type_Description" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Functionality">
+          <Key>
+            <PropertyRef Name="Functionality_ID" />
+          </Key>
+          <Property Name="Functionality_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Functionality_Desc" Type="varchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Gender_ID" />
+          </Key>
+          <Property Name="Gender_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gender_Description" Type="varchar" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Injury">
+          <Key>
+            <PropertyRef Name="Injury_ID" />
+          </Key>
+          <Property Name="Injury_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Injury_Description" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Injury_Type_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Injury_Type">
+          <Key>
+            <PropertyRef Name="Injury_Type_ID" />
+          </Key>
+          <Property Name="Injury_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Injury_Type_Desc" Type="varchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Payment_ID" />
+          </Key>
+          <Property Name="Payment_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Payment_Date" Type="date" Nullable="false" />
+          <Property Name="Payment_Amount" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="Client_ID" Type="int" />
+          <Property Name="Exercise_Plan_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Payment_Status">
+          <Key>
+            <PropertyRef Name="Payment_Status_ID" />
+          </Key>
+          <Property Name="Payment_Status_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Payment_Status_Desc" Type="varchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Set">
+          <Key>
+            <PropertyRef Name="Set_ID" />
+          </Key>
+          <Property Name="Set_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Set_Name" Type="varchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subscription">
+          <Key>
+            <PropertyRef Name="Subscription_ID" />
+          </Key>
+          <Property Name="Subscription_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subscription_Start_Date" Type="date" Nullable="false" />
+          <Property Name="Sub_Reference_Number" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Subscription_End_Date" Type="date" Nullable="false" />
+          <Property Name="Sub_Status_ID" Type="int" />
+          <Property Name="Sub_Type_ID" Type="int" />
+          <Property Name="Client_ID" Type="int" />
+          <Property Name="Booking_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Subscription_Exercise_Plan">
+          <Key>
+            <PropertyRef Name="Subscription_Plan_ID" />
+          </Key>
+          <Property Name="Subscription_Plan_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subscription_ID" Type="int" Nullable="false" />
+          <Property Name="Exercise_Plan_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subscription_Payment">
+          <Key>
+            <PropertyRef Name="Sub_Pay_ID" />
+          </Key>
+          <Property Name="Sub_Pay_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sub_Pay_Date" Type="date" Nullable="false" />
+          <Property Name="Sub_Pay_Amount" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="Subscription_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subscription_Status">
+          <Key>
+            <PropertyRef Name="Sub_Status_ID" />
+          </Key>
+          <Property Name="Sub_Status_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sub_Status_Desc" Type="varchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subscription_Type">
+          <Key>
+            <PropertyRef Name="Sub_Type_ID" />
+          </Key>
+          <Property Name="Sub_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Length" Type="int" Nullable="false" />
+          <Property Name="Weight_Amount" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="Discount_Percent" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Access_Level_ID" Type="int" />
+          <Property Name="User_Status_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="User_Status">
+          <Key>
+            <PropertyRef Name="User_Status_ID" />
+          </Key>
+          <Property Name="User_Status_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Status_Desc" Type="varchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Weight">
+          <Key>
+            <PropertyRef Name="Weight_ID" />
+          </Key>
+          <Property Name="Weight_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Weight_Amount" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="Booking_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Workout">
+          <Key>
+            <PropertyRef Name="Workout_ID" />
+          </Key>
+          <Property Name="Workout_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Workout_Number" Type="varchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Workout_Set">
+          <Key>
+            <PropertyRef Name="Workout_Set_ID" />
+          </Key>
+          <Property Name="Workout_Set_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Workout_ID" Type="int" Nullable="false" />
+          <Property Name="Exercise_Set_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Access_Fu__Acces__6C190EBB">
+          <End Role="Access_Level" Type="Self.Access_Level" Multiplicity="1" />
+          <End Role="Access_Functionality" Type="Self.Access_Functionality" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Access_Level">
+              <PropertyRef Name="Access_Level_ID" />
+            </Principal>
+            <Dependent Role="Access_Functionality">
+              <PropertyRef Name="Access_Level_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Access_Fu__Funct__6D0D32F4">
+          <End Role="Functionality" Type="Self.Functionality" Multiplicity="1" />
+          <End Role="Access_Functionality" Type="Self.Access_Functionality" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Functionality">
+              <PropertyRef Name="Functionality_ID" />
+            </Principal>
+            <Dependent Role="Access_Functionality">
+              <PropertyRef Name="Functionality_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Booking__Booking__18EBB532">
+          <End Role="Booking_Type" Type="Self.Booking_Type" Multiplicity="0..1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking_Type">
+              <PropertyRef Name="Booking_Type_ID" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="Booking_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Booking__Booking__19DFD96B">
+          <End Role="Booking_Status" Type="Self.Booking_Status" Multiplicity="0..1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking_Status">
+              <PropertyRef Name="Booking_Status_ID" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="Booking_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Booking__Employe__1AD3FDA4">
+          <End Role="Employee_Slot" Type="Self.Employee_Slot" Multiplicity="1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Slot">
+              <PropertyRef Name="Employee_Slot_ID" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="Employee_Slot_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Challenge__Chall__5EBF139D">
+          <End Role="Challenge_Status" Type="Self.Challenge_Status" Multiplicity="0..1" />
+          <End Role="Challenge" Type="Self.Challenge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Challenge_Status">
+              <PropertyRef Name="Challenge_Status_ID" />
+            </Principal>
+            <Dependent Role="Challenge">
+              <PropertyRef Name="Challenge_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Challenge__Chall__5FB337D6">
+          <End Role="Challenge_Type" Type="Self.Challenge_Type" Multiplicity="0..1" />
+          <End Role="Challenge" Type="Self.Challenge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Challenge_Type">
+              <PropertyRef Name="Challenge_Type_ID" />
+            </Principal>
+            <Dependent Role="Challenge">
+              <PropertyRef Name="Challenge_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Challenge__Chall__628FA481">
+          <End Role="Challenge" Type="Self.Challenge" Multiplicity="1" />
+          <End Role="Challenge_Exercise_Plan" Type="Self.Challenge_Exercise_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Challenge">
+              <PropertyRef Name="Challenge_ID" />
+            </Principal>
+            <Dependent Role="Challenge_Exercise_Plan">
+              <PropertyRef Name="Challenge_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Challenge__Clien__2645B050">
+          <End Role="Client_Challenge" Type="Self.Client_Challenge" Multiplicity="1" />
+          <End Role="Challenge_Payment" Type="Self.Challenge_Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client_Challenge">
+              <PropertyRef Name="Client_Challenge_ID" />
+            </Principal>
+            <Dependent Role="Challenge_Payment">
+              <PropertyRef Name="Client_Challenge_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Challenge__Exerc__6383C8BA">
+          <End Role="Exercise_Plan" Type="Self.Exercise_Plan" Multiplicity="1" />
+          <End Role="Challenge_Exercise_Plan" Type="Self.Challenge_Exercise_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise_Plan">
+              <PropertyRef Name="Exercise_Plan_ID" />
+            </Principal>
+            <Dependent Role="Challenge_Exercise_Plan">
+              <PropertyRef Name="Exercise_Plan_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client__Client_A__778AC167">
+          <End Role="Client_Account_Status" Type="Self.Client_Account_Status" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client_Account_Status">
+              <PropertyRef Name="Client_Acc_Stat_ID" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="Client_Acc_Stat_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client__Gender_I__797309D9">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Gender_ID" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="Gender_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client__User_ID__787EE5A0">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_Ch__Booki__236943A5">
+          <End Role="Booking" Type="Self.Booking" Multiplicity="0..1" />
+          <End Role="Client_Challenge" Type="Self.Client_Challenge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="Booking_ID" />
+            </Principal>
+            <Dependent Role="Client_Challenge">
+              <PropertyRef Name="Booking_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_Ch__Chal___22751F6C">
+          <End Role="Challenge_Pay_Status" Type="Self.Challenge_Pay_Status" Multiplicity="0..1" />
+          <End Role="Client_Challenge" Type="Self.Client_Challenge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Challenge_Pay_Status">
+              <PropertyRef Name="Chal_Pay_Status_ID" />
+            </Principal>
+            <Dependent Role="Client_Challenge">
+              <PropertyRef Name="Chal_Pay_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_Ch__Chall__2180FB33">
+          <End Role="Challenge" Type="Self.Challenge" Multiplicity="1" />
+          <End Role="Client_Challenge" Type="Self.Client_Challenge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Challenge">
+              <PropertyRef Name="Challenge_ID" />
+            </Principal>
+            <Dependent Role="Client_Challenge">
+              <PropertyRef Name="Challenge_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_Ch__Clien__208CD6FA">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Client_Challenge" Type="Self.Client_Challenge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Client_ID" />
+            </Principal>
+            <Dependent Role="Client_Challenge">
+              <PropertyRef Name="Client_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_In__Clien__3A4CA8FD">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Client_Injury" Type="Self.Client_Injury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Client_ID" />
+            </Principal>
+            <Dependent Role="Client_Injury">
+              <PropertyRef Name="Client_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_In__Injur__3B40CD36">
+          <End Role="Injury" Type="Self.Injury" Multiplicity="1" />
+          <End Role="Client_Injury" Type="Self.Client_Injury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Injury">
+              <PropertyRef Name="Injury_ID" />
+            </Principal>
+            <Dependent Role="Client_Injury">
+              <PropertyRef Name="Injury_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_Pl__Clien__7E37BEF6">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Client_Plan" Type="Self.Client_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Client_ID" />
+            </Principal>
+            <Dependent Role="Client_Plan">
+              <PropertyRef Name="Client_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_Pl__Exerc__7F2BE32F">
+          <End Role="Exercise_Plan" Type="Self.Exercise_Plan" Multiplicity="1" />
+          <End Role="Client_Plan" Type="Self.Client_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise_Plan">
+              <PropertyRef Name="Exercise_Plan_ID" />
+            </Principal>
+            <Dependent Role="Client_Plan">
+              <PropertyRef Name="Exercise_Plan_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_Pl__Payme__00200768">
+          <End Role="Payment_Status" Type="Self.Payment_Status" Multiplicity="0..1" />
+          <End Role="Client_Plan" Type="Self.Client_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment_Status">
+              <PropertyRef Name="Payment_Status_ID" />
+            </Principal>
+            <Dependent Role="Client_Plan">
+              <PropertyRef Name="Payment_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Day_Worko__Exerc__5629CD9C">
+          <End Role="Exercise_Plan_Day" Type="Self.Exercise_Plan_Day" Multiplicity="1" />
+          <End Role="Day_Workout" Type="Self.Day_Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise_Plan_Day">
+              <PropertyRef Name="Exercise_Plan_Day_ID" />
+            </Principal>
+            <Dependent Role="Day_Workout">
+              <PropertyRef Name="Exercise_Plan_Day_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Day_Worko__Worko__5535A963">
+          <End Role="Workout_Set" Type="Self.Workout_Set" Multiplicity="1" />
+          <End Role="Day_Workout" Type="Self.Day_Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workout_Set">
+              <PropertyRef Name="Workout_Set_ID" />
+            </Principal>
+            <Dependent Role="Day_Workout">
+              <PropertyRef Name="Workout_Set_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___Booki__123EB7A3">
+          <End Role="Booking_Slot" Type="Self.Booking_Slot" Multiplicity="1" />
+          <End Role="Employee_Slot" Type="Self.Employee_Slot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking_Slot">
+              <PropertyRef Name="Booking_Slot_ID" />
+            </Principal>
+            <Dependent Role="Employee_Slot">
+              <PropertyRef Name="Booking_Slot_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___Emplo__114A936A">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Employee_Slot" Type="Self.Employee_Slot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Employee_ID" />
+            </Principal>
+            <Dependent Role="Employee_Slot">
+              <PropertyRef Name="Employee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__Employ__0A9D95DB">
+          <End Role="Employee_Type" Type="Self.Employee_Type" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Type">
+              <PropertyRef Name="Employee_Type_ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Employee_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__Gender__0C85DE4D">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Gender_ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Gender_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__User_I__0B91BA14">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Exercise___Day_I__3F466844">
+          <End Role="Day" Type="Self.Day" Multiplicity="1" />
+          <End Role="Exercise_Plan_Day" Type="Self.Exercise_Plan_Day" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Day">
+              <PropertyRef Name="Day_ID" />
+            </Principal>
+            <Dependent Role="Exercise_Plan_Day">
+              <PropertyRef Name="Day_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Exercise___Exerc__398D8EEE">
+          <End Role="Exercise_Plan_Type" Type="Self.Exercise_Plan_Type" Multiplicity="0..1" />
+          <End Role="Exercise_Plan" Type="Self.Exercise_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise_Plan_Type">
+              <PropertyRef Name="Exercise_Plan_Type_ID" />
+            </Principal>
+            <Dependent Role="Exercise_Plan">
+              <PropertyRef Name="Exercise_Plan_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Exercise___Exerc__3E52440B">
+          <End Role="Exercise_Plan" Type="Self.Exercise_Plan" Multiplicity="1" />
+          <End Role="Exercise_Plan_Day" Type="Self.Exercise_Plan_Day" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise_Plan">
+              <PropertyRef Name="Exercise_Plan_ID" />
+            </Principal>
+            <Dependent Role="Exercise_Plan_Day">
+              <PropertyRef Name="Exercise_Plan_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Exercise___Exerc__4D94879B">
+          <End Role="Exercise" Type="Self.Exercise" Multiplicity="1" />
+          <End Role="Exercise_Set" Type="Self.Exercise_Set" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise">
+              <PropertyRef Name="Exercise_ID" />
+            </Principal>
+            <Dependent Role="Exercise_Set">
+              <PropertyRef Name="Exercise_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Exercise___Set_I__4E88ABD4">
+          <End Role="Set" Type="Self.Set" Multiplicity="1" />
+          <End Role="Exercise_Set" Type="Self.Exercise_Set" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Set">
+              <PropertyRef Name="Set_ID" />
+            </Principal>
+            <Dependent Role="Exercise_Set">
+              <PropertyRef Name="Set_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Exercise__Exerci__47DBAE45">
+          <End Role="Exercise_Type" Type="Self.Exercise_Type" Multiplicity="1" />
+          <End Role="Exercise" Type="Self.Exercise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise_Type">
+              <PropertyRef Name="Exercise_Type_ID" />
+            </Principal>
+            <Dependent Role="Exercise">
+              <PropertyRef Name="Exercise_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Exercise__Exerci__48CFD27E">
+          <End Role="Exercise_Body_Type" Type="Self.Exercise_Body_Type" Multiplicity="1" />
+          <End Role="Exercise" Type="Self.Exercise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise_Body_Type">
+              <PropertyRef Name="Exercise_Body_Type_ID" />
+            </Principal>
+            <Dependent Role="Exercise">
+              <PropertyRef Name="Exercise_Body_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Injury__Injury_T__37703C52">
+          <End Role="Injury_Type" Type="Self.Injury_Type" Multiplicity="1" />
+          <End Role="Injury" Type="Self.Injury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Injury_Type">
+              <PropertyRef Name="Injury_Type_ID" />
+            </Principal>
+            <Dependent Role="Injury">
+              <PropertyRef Name="Injury_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payment__Client___02FC7413">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Client_ID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="Client_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payment__Exercis__03F0984C">
+          <End Role="Exercise_Plan" Type="Self.Exercise_Plan" Multiplicity="0..1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise_Plan">
+              <PropertyRef Name="Exercise_Plan_ID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="Exercise_Plan_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subscript__Booki__2FCF1A8A">
+          <End Role="Booking" Type="Self.Booking" Multiplicity="0..1" />
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="Booking_ID" />
+            </Principal>
+            <Dependent Role="Subscription">
+              <PropertyRef Name="Booking_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subscript__Clien__2EDAF651">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Client_ID" />
+            </Principal>
+            <Dependent Role="Subscription">
+              <PropertyRef Name="Client_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subscript__Exerc__3F115E1A">
+          <End Role="Exercise_Plan" Type="Self.Exercise_Plan" Multiplicity="1" />
+          <End Role="Subscription_Exercise_Plan" Type="Self.Subscription_Exercise_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise_Plan">
+              <PropertyRef Name="Exercise_Plan_ID" />
+            </Principal>
+            <Dependent Role="Subscription_Exercise_Plan">
+              <PropertyRef Name="Exercise_Plan_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subscript__Sub_S__2CF2ADDF">
+          <End Role="Subscription_Status" Type="Self.Subscription_Status" Multiplicity="0..1" />
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscription_Status">
+              <PropertyRef Name="Sub_Status_ID" />
+            </Principal>
+            <Dependent Role="Subscription">
+              <PropertyRef Name="Sub_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subscript__Sub_T__2DE6D218">
+          <End Role="Subscription_Type" Type="Self.Subscription_Type" Multiplicity="0..1" />
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscription_Type">
+              <PropertyRef Name="Sub_Type_ID" />
+            </Principal>
+            <Dependent Role="Subscription">
+              <PropertyRef Name="Sub_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subscript__Subsc__32AB8735">
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="1" />
+          <End Role="Subscription_Payment" Type="Self.Subscription_Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscription">
+              <PropertyRef Name="Subscription_ID" />
+            </Principal>
+            <Dependent Role="Subscription_Payment">
+              <PropertyRef Name="Subscription_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subscript__Subsc__3E1D39E1">
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="1" />
+          <End Role="Subscription_Exercise_Plan" Type="Self.Subscription_Exercise_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscription">
+              <PropertyRef Name="Subscription_ID" />
+            </Principal>
+            <Dependent Role="Subscription_Exercise_Plan">
+              <PropertyRef Name="Subscription_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User__Access_Lev__71D1E811">
+          <End Role="Access_Level" Type="Self.Access_Level" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Access_Level">
+              <PropertyRef Name="Access_Level_ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Access_Level_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User__User_Statu__72C60C4A">
+          <End Role="User_Status" Type="Self.User_Status" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_Status">
+              <PropertyRef Name="User_Status_ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="User_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Weight__Booking___1DB06A4F">
+          <End Role="Booking" Type="Self.Booking" Multiplicity="0..1" />
+          <End Role="Weight" Type="Self.Weight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="Booking_ID" />
+            </Principal>
+            <Dependent Role="Weight">
+              <PropertyRef Name="Booking_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Workout_S__Exerc__52593CB8">
+          <End Role="Exercise_Set" Type="Self.Exercise_Set" Multiplicity="1" />
+          <End Role="Workout_Set" Type="Self.Workout_Set" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise_Set">
+              <PropertyRef Name="Exercise_Set_ID" />
+            </Principal>
+            <Dependent Role="Workout_Set">
+              <PropertyRef Name="Exercise_Set_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Workout_S__Worko__5165187F">
+          <End Role="Workout" Type="Self.Workout" Multiplicity="1" />
+          <End Role="Workout_Set" Type="Self.Workout_Set" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workout">
+              <PropertyRef Name="Workout_ID" />
+            </Principal>
+            <Dependent Role="Workout_Set">
+              <PropertyRef Name="Workout_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="JessterFITdbModelStoreContainer">
+          <EntitySet Name="Access_Functionality" EntityType="Self.Access_Functionality" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Access_Level" EntityType="Self.Access_Level" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Booking_Slot" EntityType="Self.Booking_Slot" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Booking_Status" EntityType="Self.Booking_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Booking_Type" EntityType="Self.Booking_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Challenge" EntityType="Self.Challenge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Challenge_Exercise_Plan" EntityType="Self.Challenge_Exercise_Plan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Challenge_Pay_Status" EntityType="Self.Challenge_Pay_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Challenge_Payment" EntityType="Self.Challenge_Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Challenge_Status" EntityType="Self.Challenge_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Challenge_Type" EntityType="Self.Challenge_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client_Account_Status" EntityType="Self.Client_Account_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client_Challenge" EntityType="Self.Client_Challenge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client_Injury" EntityType="Self.Client_Injury" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client_Plan" EntityType="Self.Client_Plan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Day" EntityType="Self.Day" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Day_Workout" EntityType="Self.Day_Workout" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee_Slot" EntityType="Self.Employee_Slot" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee_Type" EntityType="Self.Employee_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exercise" EntityType="Self.Exercise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exercise_Body_Type" EntityType="Self.Exercise_Body_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exercise_Plan" EntityType="Self.Exercise_Plan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exercise_Plan_Day" EntityType="Self.Exercise_Plan_Day" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exercise_Plan_Type" EntityType="Self.Exercise_Plan_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exercise_Set" EntityType="Self.Exercise_Set" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exercise_Type" EntityType="Self.Exercise_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Functionality" EntityType="Self.Functionality" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Injury" EntityType="Self.Injury" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Injury_Type" EntityType="Self.Injury_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment_Status" EntityType="Self.Payment_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Set" EntityType="Self.Set" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subscription" EntityType="Self.Subscription" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subscription_Exercise_Plan" EntityType="Self.Subscription_Exercise_Plan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subscription_Payment" EntityType="Self.Subscription_Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subscription_Status" EntityType="Self.Subscription_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subscription_Type" EntityType="Self.Subscription_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Status" EntityType="Self.User_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Weight" EntityType="Self.Weight" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Workout" EntityType="Self.Workout" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Workout_Set" EntityType="Self.Workout_Set" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Access_Fu__Acces__6C190EBB" Association="Self.FK__Access_Fu__Acces__6C190EBB">
+            <End Role="Access_Level" EntitySet="Access_Level" />
+            <End Role="Access_Functionality" EntitySet="Access_Functionality" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Access_Fu__Funct__6D0D32F4" Association="Self.FK__Access_Fu__Funct__6D0D32F4">
+            <End Role="Functionality" EntitySet="Functionality" />
+            <End Role="Access_Functionality" EntitySet="Access_Functionality" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Booking__Booking__18EBB532" Association="Self.FK__Booking__Booking__18EBB532">
+            <End Role="Booking_Type" EntitySet="Booking_Type" />
+            <End Role="Booking" EntitySet="Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Booking__Booking__19DFD96B" Association="Self.FK__Booking__Booking__19DFD96B">
+            <End Role="Booking_Status" EntitySet="Booking_Status" />
+            <End Role="Booking" EntitySet="Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Booking__Employe__1AD3FDA4" Association="Self.FK__Booking__Employe__1AD3FDA4">
+            <End Role="Employee_Slot" EntitySet="Employee_Slot" />
+            <End Role="Booking" EntitySet="Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Challenge__Chall__5EBF139D" Association="Self.FK__Challenge__Chall__5EBF139D">
+            <End Role="Challenge_Status" EntitySet="Challenge_Status" />
+            <End Role="Challenge" EntitySet="Challenge" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Challenge__Chall__5FB337D6" Association="Self.FK__Challenge__Chall__5FB337D6">
+            <End Role="Challenge_Type" EntitySet="Challenge_Type" />
+            <End Role="Challenge" EntitySet="Challenge" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Challenge__Chall__628FA481" Association="Self.FK__Challenge__Chall__628FA481">
+            <End Role="Challenge" EntitySet="Challenge" />
+            <End Role="Challenge_Exercise_Plan" EntitySet="Challenge_Exercise_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Challenge__Clien__2645B050" Association="Self.FK__Challenge__Clien__2645B050">
+            <End Role="Client_Challenge" EntitySet="Client_Challenge" />
+            <End Role="Challenge_Payment" EntitySet="Challenge_Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Challenge__Exerc__6383C8BA" Association="Self.FK__Challenge__Exerc__6383C8BA">
+            <End Role="Exercise_Plan" EntitySet="Exercise_Plan" />
+            <End Role="Challenge_Exercise_Plan" EntitySet="Challenge_Exercise_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client__Client_A__778AC167" Association="Self.FK__Client__Client_A__778AC167">
+            <End Role="Client_Account_Status" EntitySet="Client_Account_Status" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client__Gender_I__797309D9" Association="Self.FK__Client__Gender_I__797309D9">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client__User_ID__787EE5A0" Association="Self.FK__Client__User_ID__787EE5A0">
+            <End Role="User" EntitySet="User" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_Ch__Booki__236943A5" Association="Self.FK__Client_Ch__Booki__236943A5">
+            <End Role="Booking" EntitySet="Booking" />
+            <End Role="Client_Challenge" EntitySet="Client_Challenge" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_Ch__Chal___22751F6C" Association="Self.FK__Client_Ch__Chal___22751F6C">
+            <End Role="Challenge_Pay_Status" EntitySet="Challenge_Pay_Status" />
+            <End Role="Client_Challenge" EntitySet="Client_Challenge" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_Ch__Chall__2180FB33" Association="Self.FK__Client_Ch__Chall__2180FB33">
+            <End Role="Challenge" EntitySet="Challenge" />
+            <End Role="Client_Challenge" EntitySet="Client_Challenge" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_Ch__Clien__208CD6FA" Association="Self.FK__Client_Ch__Clien__208CD6FA">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Client_Challenge" EntitySet="Client_Challenge" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_In__Clien__3A4CA8FD" Association="Self.FK__Client_In__Clien__3A4CA8FD">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Client_Injury" EntitySet="Client_Injury" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_In__Injur__3B40CD36" Association="Self.FK__Client_In__Injur__3B40CD36">
+            <End Role="Injury" EntitySet="Injury" />
+            <End Role="Client_Injury" EntitySet="Client_Injury" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_Pl__Clien__7E37BEF6" Association="Self.FK__Client_Pl__Clien__7E37BEF6">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Client_Plan" EntitySet="Client_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_Pl__Exerc__7F2BE32F" Association="Self.FK__Client_Pl__Exerc__7F2BE32F">
+            <End Role="Exercise_Plan" EntitySet="Exercise_Plan" />
+            <End Role="Client_Plan" EntitySet="Client_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_Pl__Payme__00200768" Association="Self.FK__Client_Pl__Payme__00200768">
+            <End Role="Payment_Status" EntitySet="Payment_Status" />
+            <End Role="Client_Plan" EntitySet="Client_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Day_Worko__Exerc__5629CD9C" Association="Self.FK__Day_Worko__Exerc__5629CD9C">
+            <End Role="Exercise_Plan_Day" EntitySet="Exercise_Plan_Day" />
+            <End Role="Day_Workout" EntitySet="Day_Workout" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Day_Worko__Worko__5535A963" Association="Self.FK__Day_Worko__Worko__5535A963">
+            <End Role="Workout_Set" EntitySet="Workout_Set" />
+            <End Role="Day_Workout" EntitySet="Day_Workout" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___Booki__123EB7A3" Association="Self.FK__Employee___Booki__123EB7A3">
+            <End Role="Booking_Slot" EntitySet="Booking_Slot" />
+            <End Role="Employee_Slot" EntitySet="Employee_Slot" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___Emplo__114A936A" Association="Self.FK__Employee___Emplo__114A936A">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Employee_Slot" EntitySet="Employee_Slot" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__Employ__0A9D95DB" Association="Self.FK__Employee__Employ__0A9D95DB">
+            <End Role="Employee_Type" EntitySet="Employee_Type" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__Gender__0C85DE4D" Association="Self.FK__Employee__Gender__0C85DE4D">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__User_I__0B91BA14" Association="Self.FK__Employee__User_I__0B91BA14">
+            <End Role="User" EntitySet="User" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Exercise___Day_I__3F466844" Association="Self.FK__Exercise___Day_I__3F466844">
+            <End Role="Day" EntitySet="Day" />
+            <End Role="Exercise_Plan_Day" EntitySet="Exercise_Plan_Day" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Exercise___Exerc__398D8EEE" Association="Self.FK__Exercise___Exerc__398D8EEE">
+            <End Role="Exercise_Plan_Type" EntitySet="Exercise_Plan_Type" />
+            <End Role="Exercise_Plan" EntitySet="Exercise_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Exercise___Exerc__3E52440B" Association="Self.FK__Exercise___Exerc__3E52440B">
+            <End Role="Exercise_Plan" EntitySet="Exercise_Plan" />
+            <End Role="Exercise_Plan_Day" EntitySet="Exercise_Plan_Day" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Exercise___Exerc__4D94879B" Association="Self.FK__Exercise___Exerc__4D94879B">
+            <End Role="Exercise" EntitySet="Exercise" />
+            <End Role="Exercise_Set" EntitySet="Exercise_Set" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Exercise___Set_I__4E88ABD4" Association="Self.FK__Exercise___Set_I__4E88ABD4">
+            <End Role="Set" EntitySet="Set" />
+            <End Role="Exercise_Set" EntitySet="Exercise_Set" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Exercise__Exerci__47DBAE45" Association="Self.FK__Exercise__Exerci__47DBAE45">
+            <End Role="Exercise_Type" EntitySet="Exercise_Type" />
+            <End Role="Exercise" EntitySet="Exercise" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Exercise__Exerci__48CFD27E" Association="Self.FK__Exercise__Exerci__48CFD27E">
+            <End Role="Exercise_Body_Type" EntitySet="Exercise_Body_Type" />
+            <End Role="Exercise" EntitySet="Exercise" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Injury__Injury_T__37703C52" Association="Self.FK__Injury__Injury_T__37703C52">
+            <End Role="Injury_Type" EntitySet="Injury_Type" />
+            <End Role="Injury" EntitySet="Injury" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__Client___02FC7413" Association="Self.FK__Payment__Client___02FC7413">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__Exercis__03F0984C" Association="Self.FK__Payment__Exercis__03F0984C">
+            <End Role="Exercise_Plan" EntitySet="Exercise_Plan" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subscript__Booki__2FCF1A8A" Association="Self.FK__Subscript__Booki__2FCF1A8A">
+            <End Role="Booking" EntitySet="Booking" />
+            <End Role="Subscription" EntitySet="Subscription" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subscript__Clien__2EDAF651" Association="Self.FK__Subscript__Clien__2EDAF651">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Subscription" EntitySet="Subscription" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subscript__Exerc__3F115E1A" Association="Self.FK__Subscript__Exerc__3F115E1A">
+            <End Role="Exercise_Plan" EntitySet="Exercise_Plan" />
+            <End Role="Subscription_Exercise_Plan" EntitySet="Subscription_Exercise_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subscript__Sub_S__2CF2ADDF" Association="Self.FK__Subscript__Sub_S__2CF2ADDF">
+            <End Role="Subscription_Status" EntitySet="Subscription_Status" />
+            <End Role="Subscription" EntitySet="Subscription" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subscript__Sub_T__2DE6D218" Association="Self.FK__Subscript__Sub_T__2DE6D218">
+            <End Role="Subscription_Type" EntitySet="Subscription_Type" />
+            <End Role="Subscription" EntitySet="Subscription" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subscript__Subsc__32AB8735" Association="Self.FK__Subscript__Subsc__32AB8735">
+            <End Role="Subscription" EntitySet="Subscription" />
+            <End Role="Subscription_Payment" EntitySet="Subscription_Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subscript__Subsc__3E1D39E1" Association="Self.FK__Subscript__Subsc__3E1D39E1">
+            <End Role="Subscription" EntitySet="Subscription" />
+            <End Role="Subscription_Exercise_Plan" EntitySet="Subscription_Exercise_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User__Access_Lev__71D1E811" Association="Self.FK__User__Access_Lev__71D1E811">
+            <End Role="Access_Level" EntitySet="Access_Level" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User__User_Statu__72C60C4A" Association="Self.FK__User__User_Statu__72C60C4A">
+            <End Role="User_Status" EntitySet="User_Status" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Weight__Booking___1DB06A4F" Association="Self.FK__Weight__Booking___1DB06A4F">
+            <End Role="Booking" EntitySet="Booking" />
+            <End Role="Weight" EntitySet="Weight" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Workout_S__Exerc__52593CB8" Association="Self.FK__Workout_S__Exerc__52593CB8">
+            <End Role="Exercise_Set" EntitySet="Exercise_Set" />
+            <End Role="Workout_Set" EntitySet="Workout_Set" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Workout_S__Worko__5165187F" Association="Self.FK__Workout_S__Worko__5165187F">
+            <End Role="Workout" EntitySet="Workout" />
+            <End Role="Workout_Set" EntitySet="Workout_Set" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="JessterFITdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Access_Functionality">
+          <Key>
+            <PropertyRef Name="Access_Func_ID" />
+          </Key>
+          <Property Name="Access_Func_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Access_Level_ID" Type="Int32" Nullable="false" />
+          <Property Name="Functionality_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Access_Level" Relationship="Self.FK__Access_Fu__Acces__6C190EBB" FromRole="Access_Functionality" ToRole="Access_Level" />
+          <NavigationProperty Name="Functionality" Relationship="Self.FK__Access_Fu__Funct__6D0D32F4" FromRole="Access_Functionality" ToRole="Functionality" />
+        </EntityType>
+        <EntityType Name="Access_Level">
+          <Key>
+            <PropertyRef Name="Access_Level_ID" />
+          </Key>
+          <Property Name="Access_Level_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Access_Level_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Access_Functionality" Relationship="Self.FK__Access_Fu__Acces__6C190EBB" FromRole="Access_Level" ToRole="Access_Functionality" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__User__Access_Lev__71D1E811" FromRole="Access_Level" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="Booking_ID" />
+          </Key>
+          <Property Name="Booking_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Booking_Type_ID" Type="Int32" />
+          <Property Name="Booking_Status_ID" Type="Int32" />
+          <Property Name="Employee_Slot_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Booking_Type" Relationship="Self.FK__Booking__Booking__18EBB532" FromRole="Booking" ToRole="Booking_Type" />
+          <NavigationProperty Name="Booking_Status" Relationship="Self.FK__Booking__Booking__19DFD96B" FromRole="Booking" ToRole="Booking_Status" />
+          <NavigationProperty Name="Employee_Slot" Relationship="Self.FK__Booking__Employe__1AD3FDA4" FromRole="Booking" ToRole="Employee_Slot" />
+          <NavigationProperty Name="Client_Challenge" Relationship="Self.FK__Client_Ch__Booki__236943A5" FromRole="Booking" ToRole="Client_Challenge" />
+          <NavigationProperty Name="Subscriptions" Relationship="Self.FK__Subscript__Booki__2FCF1A8A" FromRole="Booking" ToRole="Subscription" />
+          <NavigationProperty Name="Weights" Relationship="Self.FK__Weight__Booking___1DB06A4F" FromRole="Booking" ToRole="Weight" />
+        </EntityType>
+        <EntityType Name="Booking_Slot">
+          <Key>
+            <PropertyRef Name="Booking_Slot_ID" />
+          </Key>
+          <Property Name="Booking_Slot_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Booking_Slot_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Booking_Slot_Start" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Booking_Slot_End" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Booking_Slot_Venue" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Employee_Slot" Relationship="Self.FK__Employee___Booki__123EB7A3" FromRole="Booking_Slot" ToRole="Employee_Slot" />
+        </EntityType>
+        <EntityType Name="Booking_Status">
+          <Key>
+            <PropertyRef Name="Booking_Status_ID" />
+          </Key>
+          <Property Name="Booking_Status_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Booking_Status_Desc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Bookings" Relationship="Self.FK__Booking__Booking__19DFD96B" FromRole="Booking_Status" ToRole="Booking" />
+        </EntityType>
+        <EntityType Name="Booking_Type">
+          <Key>
+            <PropertyRef Name="Booking_Type_ID" />
+          </Key>
+          <Property Name="Booking_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Booking_Type_Desc" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Bookings" Relationship="Self.FK__Booking__Booking__18EBB532" FromRole="Booking_Type" ToRole="Booking" />
+        </EntityType>
+        <EntityType Name="Challenge">
+          <Key>
+            <PropertyRef Name="Challenge_ID" />
+          </Key>
+          <Property Name="Challenge_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Challenge_Start_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Challenge_End_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Challenge_Amount" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="Challenge_Prize" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Challenge_Status_ID" Type="Int32" />
+          <Property Name="Challenge_Type_ID" Type="Int32" />
+          <NavigationProperty Name="Challenge_Status" Relationship="Self.FK__Challenge__Chall__5EBF139D" FromRole="Challenge" ToRole="Challenge_Status" />
+          <NavigationProperty Name="Challenge_Type" Relationship="Self.FK__Challenge__Chall__5FB337D6" FromRole="Challenge" ToRole="Challenge_Type" />
+          <NavigationProperty Name="Challenge_Exercise_Plan" Relationship="Self.FK__Challenge__Chall__628FA481" FromRole="Challenge" ToRole="Challenge_Exercise_Plan" />
+          <NavigationProperty Name="Client_Challenge" Relationship="Self.FK__Client_Ch__Chall__2180FB33" FromRole="Challenge" ToRole="Client_Challenge" />
+        </EntityType>
+        <EntityType Name="Challenge_Exercise_Plan">
+          <Key>
+            <PropertyRef Name="Challenge_ID" />
+            <PropertyRef Name="Exercise_Plan_ID" />
+          </Key>
+          <Property Name="Challenge_ID" Type="Int32" Nullable="false" />
+          <Property Name="Exercise_Plan_ID" Type="Int32" Nullable="false" />
+          <Property Name="Challenge_Month_Number" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Challenge" Relationship="Self.FK__Challenge__Chall__628FA481" FromRole="Challenge_Exercise_Plan" ToRole="Challenge" />
+          <NavigationProperty Name="Exercise_Plan" Relationship="Self.FK__Challenge__Exerc__6383C8BA" FromRole="Challenge_Exercise_Plan" ToRole="Exercise_Plan" />
+        </EntityType>
+        <EntityType Name="Challenge_Pay_Status">
+          <Key>
+            <PropertyRef Name="Chal_Pay_Status_ID" />
+          </Key>
+          <Property Name="Chal_Pay_Status_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Chal_Pay_Status_Desc" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Client_Challenge" Relationship="Self.FK__Client_Ch__Chal___22751F6C" FromRole="Challenge_Pay_Status" ToRole="Client_Challenge" />
+        </EntityType>
+        <EntityType Name="Challenge_Payment">
+          <Key>
+            <PropertyRef Name="Challenge_Pay_ID" />
+          </Key>
+          <Property Name="Challenge_Pay_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Challenge_Pay_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Challenge_Pay_Amount" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="Client_Challenge_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client_Challenge" Relationship="Self.FK__Challenge__Clien__2645B050" FromRole="Challenge_Payment" ToRole="Client_Challenge" />
+        </EntityType>
+        <EntityType Name="Challenge_Status">
+          <Key>
+            <PropertyRef Name="Challenge_Status_ID" />
+          </Key>
+          <Property Name="Challenge_Status_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Challenge_Status_Desc" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Challenges" Relationship="Self.FK__Challenge__Chall__5EBF139D" FromRole="Challenge_Status" ToRole="Challenge" />
+        </EntityType>
+        <EntityType Name="Challenge_Type">
+          <Key>
+            <PropertyRef Name="Challenge_Type_ID" />
+          </Key>
+          <Property Name="Challenge_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Challenge_Type_Desc" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Challenge_Details" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Challenges" Relationship="Self.FK__Challenge__Chall__5FB337D6" FromRole="Challenge_Type" ToRole="Challenge" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Client_ID" />
+          </Key>
+          <Property Name="Client_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Client_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Client_Surname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Client_Contact" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Client_Height" Type="Int32" Nullable="false" />
+          <Property Name="Date_of_Birth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Subscription_Balance" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="Client_Acc_Stat_ID" Type="Int32" />
+          <Property Name="User_ID" Type="Int32" />
+          <Property Name="Gender_ID" Type="Int32" />
+          <NavigationProperty Name="Client_Account_Status" Relationship="Self.FK__Client__Client_A__778AC167" FromRole="Client" ToRole="Client_Account_Status" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK__Client__Gender_I__797309D9" FromRole="Client" ToRole="Gender" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Client__User_ID__787EE5A0" FromRole="Client" ToRole="User" />
+          <NavigationProperty Name="Client_Challenge" Relationship="Self.FK__Client_Ch__Clien__208CD6FA" FromRole="Client" ToRole="Client_Challenge" />
+          <NavigationProperty Name="Client_Injury" Relationship="Self.FK__Client_In__Clien__3A4CA8FD" FromRole="Client" ToRole="Client_Injury" />
+          <NavigationProperty Name="Client_Plan" Relationship="Self.FK__Client_Pl__Clien__7E37BEF6" FromRole="Client" ToRole="Client_Plan" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK__Payment__Client___02FC7413" FromRole="Client" ToRole="Payment" />
+          <NavigationProperty Name="Subscriptions" Relationship="Self.FK__Subscript__Clien__2EDAF651" FromRole="Client" ToRole="Subscription" />
+        </EntityType>
+        <EntityType Name="Client_Account_Status">
+          <Key>
+            <PropertyRef Name="Client_Acc_Stat_ID" />
+          </Key>
+          <Property Name="Client_Acc_Stat_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Client_Acc_Stat_Desc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK__Client__Client_A__778AC167" FromRole="Client_Account_Status" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Client_Challenge">
+          <Key>
+            <PropertyRef Name="Client_Challenge_ID" />
+          </Key>
+          <Property Name="Client_Challenge_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Client_ID" Type="Int32" Nullable="false" />
+          <Property Name="Challenge_ID" Type="Int32" Nullable="false" />
+          <Property Name="Chal_Reference_Number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Chal_Pay_Status_ID" Type="Int32" />
+          <Property Name="Booking_ID" Type="Int32" />
+          <NavigationProperty Name="Booking" Relationship="Self.FK__Client_Ch__Booki__236943A5" FromRole="Client_Challenge" ToRole="Booking" />
+          <NavigationProperty Name="Challenge" Relationship="Self.FK__Client_Ch__Chall__2180FB33" FromRole="Client_Challenge" ToRole="Challenge" />
+          <NavigationProperty Name="Challenge_Pay_Status" Relationship="Self.FK__Client_Ch__Chal___22751F6C" FromRole="Client_Challenge" ToRole="Challenge_Pay_Status" />
+          <NavigationProperty Name="Challenge_Payment" Relationship="Self.FK__Challenge__Clien__2645B050" FromRole="Client_Challenge" ToRole="Challenge_Payment" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Client_Ch__Clien__208CD6FA" FromRole="Client_Challenge" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Client_Injury">
+          <Key>
+            <PropertyRef Name="Client_Injury_ID" />
+          </Key>
+          <Property Name="Client_Injury_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Client_ID" Type="Int32" Nullable="false" />
+          <Property Name="Injury_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Client_In__Clien__3A4CA8FD" FromRole="Client_Injury" ToRole="Client" />
+          <NavigationProperty Name="Injury" Relationship="Self.FK__Client_In__Injur__3B40CD36" FromRole="Client_Injury" ToRole="Injury" />
+        </EntityType>
+        <EntityType Name="Client_Plan">
+          <Key>
+            <PropertyRef Name="Client_Plan_ID" />
+          </Key>
+          <Property Name="Client_Plan_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Client_ID" Type="Int32" Nullable="false" />
+          <Property Name="Exercise_Plan_ID" Type="Int32" Nullable="false" />
+          <Property Name="Plan_Reference_Number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Payment_Status_ID" Type="Int32" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Client_Pl__Clien__7E37BEF6" FromRole="Client_Plan" ToRole="Client" />
+          <NavigationProperty Name="Exercise_Plan" Relationship="Self.FK__Client_Pl__Exerc__7F2BE32F" FromRole="Client_Plan" ToRole="Exercise_Plan" />
+          <NavigationProperty Name="Payment_Status" Relationship="Self.FK__Client_Pl__Payme__00200768" FromRole="Client_Plan" ToRole="Payment_Status" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Company_ID" />
+          </Key>
+          <Property Name="Company_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Company_Name" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Company_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Company_Register_No" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Company_Contact" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Account_Name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Acount_Number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Account_Type" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Account_Branch" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Account_Bramch_Code" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Owner_Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Day">
+          <Key>
+            <PropertyRef Name="Day_ID" />
+          </Key>
+          <Property Name="Day_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Day_Type" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Exercise_Plan_Day" Relationship="Self.FK__Exercise___Day_I__3F466844" FromRole="Day" ToRole="Exercise_Plan_Day" />
+        </EntityType>
+        <EntityType Name="Day_Workout">
+          <Key>
+            <PropertyRef Name="Day_Workout_ID" />
+          </Key>
+          <Property Name="Day_Workout_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Workout_Set_ID" Type="Int32" Nullable="false" />
+          <Property Name="Exercise_Plan_Day_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Exercise_Plan_Day" Relationship="Self.FK__Day_Worko__Exerc__5629CD9C" FromRole="Day_Workout" ToRole="Exercise_Plan_Day" />
+          <NavigationProperty Name="Workout_Set" Relationship="Self.FK__Day_Worko__Worko__5535A963" FromRole="Day_Workout" ToRole="Workout_Set" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Employee_ID" />
+          </Key>
+          <Property Name="Employee_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Employee_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Employee_Surname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Employee_Contact" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Employee_Birth_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Employee_Type_ID" Type="Int32" />
+          <Property Name="User_ID" Type="Int32" />
+          <Property Name="Gender_ID" Type="Int32" />
+          <NavigationProperty Name="Employee_Slot" Relationship="Self.FK__Employee___Emplo__114A936A" FromRole="Employee" ToRole="Employee_Slot" />
+          <NavigationProperty Name="Employee_Type" Relationship="Self.FK__Employee__Employ__0A9D95DB" FromRole="Employee" ToRole="Employee_Type" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK__Employee__Gender__0C85DE4D" FromRole="Employee" ToRole="Gender" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Employee__User_I__0B91BA14" FromRole="Employee" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Employee_Slot">
+          <Key>
+            <PropertyRef Name="Employee_Slot_ID" />
+          </Key>
+          <Property Name="Employee_Slot_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Employee_ID" Type="Int32" Nullable="false" />
+          <Property Name="Booking_Slot_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bookings" Relationship="Self.FK__Booking__Employe__1AD3FDA4" FromRole="Employee_Slot" ToRole="Booking" />
+          <NavigationProperty Name="Booking_Slot" Relationship="Self.FK__Employee___Booki__123EB7A3" FromRole="Employee_Slot" ToRole="Booking_Slot" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Employee___Emplo__114A936A" FromRole="Employee_Slot" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Employee_Type">
+          <Key>
+            <PropertyRef Name="Employee_Type_ID" />
+          </Key>
+          <Property Name="Employee_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Employee_Type_Desc" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__Employ__0A9D95DB" FromRole="Employee_Type" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Exercise">
+          <Key>
+            <PropertyRef Name="Exercise_ID" />
+          </Key>
+          <Property Name="Exercise_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Exercise_Name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Exercise_Description" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Exercise_Type_ID" Type="Int32" Nullable="false" />
+          <Property Name="Exercise_Body_Type_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Exercise_Set" Relationship="Self.FK__Exercise___Exerc__4D94879B" FromRole="Exercise" ToRole="Exercise_Set" />
+          <NavigationProperty Name="Exercise_Type" Relationship="Self.FK__Exercise__Exerci__47DBAE45" FromRole="Exercise" ToRole="Exercise_Type" />
+          <NavigationProperty Name="Exercise_Body_Type" Relationship="Self.FK__Exercise__Exerci__48CFD27E" FromRole="Exercise" ToRole="Exercise_Body_Type" />
+        </EntityType>
+        <EntityType Name="Exercise_Body_Type">
+          <Key>
+            <PropertyRef Name="Exercise_Body_Type_ID" />
+          </Key>
+          <Property Name="Exercise_Body_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Exercise_Body_Desc" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Exercises" Relationship="Self.FK__Exercise__Exerci__48CFD27E" FromRole="Exercise_Body_Type" ToRole="Exercise" />
+        </EntityType>
+        <EntityType Name="Exercise_Plan">
+          <Key>
+            <PropertyRef Name="Exercise_Plan_ID" />
+          </Key>
+          <Property Name="Exercise_Plan_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Exercise_Plan_Name" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Exercise_Plan_Type_ID" Type="Int32" />
+          <NavigationProperty Name="Challenge_Exercise_Plan" Relationship="Self.FK__Challenge__Exerc__6383C8BA" FromRole="Exercise_Plan" ToRole="Challenge_Exercise_Plan" />
+          <NavigationProperty Name="Client_Plan" Relationship="Self.FK__Client_Pl__Exerc__7F2BE32F" FromRole="Exercise_Plan" ToRole="Client_Plan" />
+          <NavigationProperty Name="Exercise_Plan_Type" Relationship="Self.FK__Exercise___Exerc__398D8EEE" FromRole="Exercise_Plan" ToRole="Exercise_Plan_Type" />
+          <NavigationProperty Name="Exercise_Plan_Day" Relationship="Self.FK__Exercise___Exerc__3E52440B" FromRole="Exercise_Plan" ToRole="Exercise_Plan_Day" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK__Payment__Exercis__03F0984C" FromRole="Exercise_Plan" ToRole="Payment" />
+          <NavigationProperty Name="Subscription_Exercise_Plan" Relationship="Self.FK__Subscript__Exerc__3F115E1A" FromRole="Exercise_Plan" ToRole="Subscription_Exercise_Plan" />
+        </EntityType>
+        <EntityType Name="Exercise_Plan_Day">
+          <Key>
+            <PropertyRef Name="Exercise_Plan_Day_ID" />
+          </Key>
+          <Property Name="Exercise_Plan_Day_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Exercise_Plan_ID" Type="Int32" Nullable="false" />
+          <Property Name="Day_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Day" Relationship="Self.FK__Exercise___Day_I__3F466844" FromRole="Exercise_Plan_Day" ToRole="Day" />
+          <NavigationProperty Name="Day_Workout" Relationship="Self.FK__Day_Worko__Exerc__5629CD9C" FromRole="Exercise_Plan_Day" ToRole="Day_Workout" />
+          <NavigationProperty Name="Exercise_Plan" Relationship="Self.FK__Exercise___Exerc__3E52440B" FromRole="Exercise_Plan_Day" ToRole="Exercise_Plan" />
+        </EntityType>
+        <EntityType Name="Exercise_Plan_Type">
+          <Key>
+            <PropertyRef Name="Exercise_Plan_Type_ID" />
+          </Key>
+          <Property Name="Exercise_Plan_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Plan_Type_Description" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Plan_Type_Price" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Exercise_Plan" Relationship="Self.FK__Exercise___Exerc__398D8EEE" FromRole="Exercise_Plan_Type" ToRole="Exercise_Plan" />
+        </EntityType>
+        <EntityType Name="Exercise_Set">
+          <Key>
+            <PropertyRef Name="Exercise_Set_ID" />
+          </Key>
+          <Property Name="Exercise_Set_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="REP" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Exercise_ID" Type="Int32" Nullable="false" />
+          <Property Name="Set_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Exercise" Relationship="Self.FK__Exercise___Exerc__4D94879B" FromRole="Exercise_Set" ToRole="Exercise" />
+          <NavigationProperty Name="Set" Relationship="Self.FK__Exercise___Set_I__4E88ABD4" FromRole="Exercise_Set" ToRole="Set" />
+          <NavigationProperty Name="Workout_Set" Relationship="Self.FK__Workout_S__Exerc__52593CB8" FromRole="Exercise_Set" ToRole="Workout_Set" />
+        </EntityType>
+        <EntityType Name="Exercise_Type">
+          <Key>
+            <PropertyRef Name="Exercise_Type_ID" />
+          </Key>
+          <Property Name="Exercise_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Exercise_Type_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Exercises" Relationship="Self.FK__Exercise__Exerci__47DBAE45" FromRole="Exercise_Type" ToRole="Exercise" />
+        </EntityType>
+        <EntityType Name="Functionality">
+          <Key>
+            <PropertyRef Name="Functionality_ID" />
+          </Key>
+          <Property Name="Functionality_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Functionality_Desc" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Access_Functionality" Relationship="Self.FK__Access_Fu__Funct__6D0D32F4" FromRole="Functionality" ToRole="Access_Functionality" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Gender_ID" />
+          </Key>
+          <Property Name="Gender_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gender_Description" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK__Client__Gender_I__797309D9" FromRole="Gender" ToRole="Client" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__Gender__0C85DE4D" FromRole="Gender" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Injury">
+          <Key>
+            <PropertyRef Name="Injury_ID" />
+          </Key>
+          <Property Name="Injury_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Injury_Description" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Injury_Type_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client_Injury" Relationship="Self.FK__Client_In__Injur__3B40CD36" FromRole="Injury" ToRole="Client_Injury" />
+          <NavigationProperty Name="Injury_Type" Relationship="Self.FK__Injury__Injury_T__37703C52" FromRole="Injury" ToRole="Injury_Type" />
+        </EntityType>
+        <EntityType Name="Injury_Type">
+          <Key>
+            <PropertyRef Name="Injury_Type_ID" />
+          </Key>
+          <Property Name="Injury_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Injury_Type_Desc" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Injuries" Relationship="Self.FK__Injury__Injury_T__37703C52" FromRole="Injury_Type" ToRole="Injury" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Payment_ID" />
+          </Key>
+          <Property Name="Payment_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Payment_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Payment_Amount" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="Client_ID" Type="Int32" />
+          <Property Name="Exercise_Plan_ID" Type="Int32" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Payment__Client___02FC7413" FromRole="Payment" ToRole="Client" />
+          <NavigationProperty Name="Exercise_Plan" Relationship="Self.FK__Payment__Exercis__03F0984C" FromRole="Payment" ToRole="Exercise_Plan" />
+        </EntityType>
+        <EntityType Name="Payment_Status">
+          <Key>
+            <PropertyRef Name="Payment_Status_ID" />
+          </Key>
+          <Property Name="Payment_Status_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Payment_Status_Desc" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Client_Plan" Relationship="Self.FK__Client_Pl__Payme__00200768" FromRole="Payment_Status" ToRole="Client_Plan" />
+        </EntityType>
+        <EntityType Name="Set">
+          <Key>
+            <PropertyRef Name="Set_ID" />
+          </Key>
+          <Property Name="Set_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Set_Name" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Exercise_Set" Relationship="Self.FK__Exercise___Set_I__4E88ABD4" FromRole="Set" ToRole="Exercise_Set" />
+        </EntityType>
+        <EntityType Name="Subscription">
+          <Key>
+            <PropertyRef Name="Subscription_ID" />
+          </Key>
+          <Property Name="Subscription_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subscription_Start_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Sub_Reference_Number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Subscription_End_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Sub_Status_ID" Type="Int32" />
+          <Property Name="Sub_Type_ID" Type="Int32" />
+          <Property Name="Client_ID" Type="Int32" />
+          <Property Name="Booking_ID" Type="Int32" />
+          <NavigationProperty Name="Booking" Relationship="Self.FK__Subscript__Booki__2FCF1A8A" FromRole="Subscription" ToRole="Booking" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Subscript__Clien__2EDAF651" FromRole="Subscription" ToRole="Client" />
+          <NavigationProperty Name="Subscription_Status" Relationship="Self.FK__Subscript__Sub_S__2CF2ADDF" FromRole="Subscription" ToRole="Subscription_Status" />
+          <NavigationProperty Name="Subscription_Type" Relationship="Self.FK__Subscript__Sub_T__2DE6D218" FromRole="Subscription" ToRole="Subscription_Type" />
+          <NavigationProperty Name="Subscription_Payment" Relationship="Self.FK__Subscript__Subsc__32AB8735" FromRole="Subscription" ToRole="Subscription_Payment" />
+          <NavigationProperty Name="Subscription_Exercise_Plan" Relationship="Self.FK__Subscript__Subsc__3E1D39E1" FromRole="Subscription" ToRole="Subscription_Exercise_Plan" />
+        </EntityType>
+        <EntityType Name="Subscription_Exercise_Plan">
+          <Key>
+            <PropertyRef Name="Subscription_Plan_ID" />
+          </Key>
+          <Property Name="Subscription_Plan_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subscription_ID" Type="Int32" Nullable="false" />
+          <Property Name="Exercise_Plan_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Exercise_Plan" Relationship="Self.FK__Subscript__Exerc__3F115E1A" FromRole="Subscription_Exercise_Plan" ToRole="Exercise_Plan" />
+          <NavigationProperty Name="Subscription" Relationship="Self.FK__Subscript__Subsc__3E1D39E1" FromRole="Subscription_Exercise_Plan" ToRole="Subscription" />
+        </EntityType>
+        <EntityType Name="Subscription_Payment">
+          <Key>
+            <PropertyRef Name="Sub_Pay_ID" />
+          </Key>
+          <Property Name="Sub_Pay_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sub_Pay_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Sub_Pay_Amount" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="Subscription_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Subscription" Relationship="Self.FK__Subscript__Subsc__32AB8735" FromRole="Subscription_Payment" ToRole="Subscription" />
+        </EntityType>
+        <EntityType Name="Subscription_Status">
+          <Key>
+            <PropertyRef Name="Sub_Status_ID" />
+          </Key>
+          <Property Name="Sub_Status_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sub_Status_Desc" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Subscriptions" Relationship="Self.FK__Subscript__Sub_S__2CF2ADDF" FromRole="Subscription_Status" ToRole="Subscription" />
+        </EntityType>
+        <EntityType Name="Subscription_Type">
+          <Key>
+            <PropertyRef Name="Sub_Type_ID" />
+          </Key>
+          <Property Name="Sub_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Length" Type="Int32" Nullable="false" />
+          <Property Name="Weight_Amount" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="Discount_Percent" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Subscriptions" Relationship="Self.FK__Subscript__Sub_T__2DE6D218" FromRole="Subscription_Type" ToRole="Subscription" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Access_Level_ID" Type="Int32" />
+          <Property Name="User_Status_ID" Type="Int32" />
+          <NavigationProperty Name="Access_Level" Relationship="Self.FK__User__Access_Lev__71D1E811" FromRole="User" ToRole="Access_Level" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK__Client__User_ID__787EE5A0" FromRole="User" ToRole="Client" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__User_I__0B91BA14" FromRole="User" ToRole="Employee" />
+          <NavigationProperty Name="User_Status" Relationship="Self.FK__User__User_Statu__72C60C4A" FromRole="User" ToRole="User_Status" />
+        </EntityType>
+        <EntityType Name="User_Status">
+          <Key>
+            <PropertyRef Name="User_Status_ID" />
+          </Key>
+          <Property Name="User_Status_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Status_Desc" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__User__User_Statu__72C60C4A" FromRole="User_Status" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Weight">
+          <Key>
+            <PropertyRef Name="Weight_ID" />
+          </Key>
+          <Property Name="Weight_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Weight_Amount" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="Booking_ID" Type="Int32" />
+          <NavigationProperty Name="Booking" Relationship="Self.FK__Weight__Booking___1DB06A4F" FromRole="Weight" ToRole="Booking" />
+        </EntityType>
+        <EntityType Name="Workout">
+          <Key>
+            <PropertyRef Name="Workout_ID" />
+          </Key>
+          <Property Name="Workout_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Workout_Number" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Workout_Set" Relationship="Self.FK__Workout_S__Worko__5165187F" FromRole="Workout" ToRole="Workout_Set" />
+        </EntityType>
+        <EntityType Name="Workout_Set">
+          <Key>
+            <PropertyRef Name="Workout_Set_ID" />
+          </Key>
+          <Property Name="Workout_Set_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Workout_ID" Type="Int32" Nullable="false" />
+          <Property Name="Exercise_Set_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Day_Workout" Relationship="Self.FK__Day_Worko__Worko__5535A963" FromRole="Workout_Set" ToRole="Day_Workout" />
+          <NavigationProperty Name="Exercise_Set" Relationship="Self.FK__Workout_S__Exerc__52593CB8" FromRole="Workout_Set" ToRole="Exercise_Set" />
+          <NavigationProperty Name="Workout" Relationship="Self.FK__Workout_S__Worko__5165187F" FromRole="Workout_Set" ToRole="Workout" />
+        </EntityType>
+        <Association Name="FK__Access_Fu__Acces__6C190EBB">
+          <End Role="Access_Level" Type="Self.Access_Level" Multiplicity="1" />
+          <End Role="Access_Functionality" Type="Self.Access_Functionality" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Access_Level">
+              <PropertyRef Name="Access_Level_ID" />
+            </Principal>
+            <Dependent Role="Access_Functionality">
+              <PropertyRef Name="Access_Level_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Access_Fu__Funct__6D0D32F4">
+          <End Role="Functionality" Type="Self.Functionality" Multiplicity="1" />
+          <End Role="Access_Functionality" Type="Self.Access_Functionality" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Functionality">
+              <PropertyRef Name="Functionality_ID" />
+            </Principal>
+            <Dependent Role="Access_Functionality">
+              <PropertyRef Name="Functionality_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User__Access_Lev__71D1E811">
+          <End Role="Access_Level" Type="Self.Access_Level" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Access_Level">
+              <PropertyRef Name="Access_Level_ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Access_Level_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Booking__Booking__18EBB532">
+          <End Role="Booking_Type" Type="Self.Booking_Type" Multiplicity="0..1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking_Type">
+              <PropertyRef Name="Booking_Type_ID" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="Booking_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Booking__Booking__19DFD96B">
+          <End Role="Booking_Status" Type="Self.Booking_Status" Multiplicity="0..1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking_Status">
+              <PropertyRef Name="Booking_Status_ID" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="Booking_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Booking__Employe__1AD3FDA4">
+          <End Role="Employee_Slot" Type="Self.Employee_Slot" Multiplicity="1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Slot">
+              <PropertyRef Name="Employee_Slot_ID" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="Employee_Slot_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_Ch__Booki__236943A5">
+          <End Role="Booking" Type="Self.Booking" Multiplicity="0..1" />
+          <End Role="Client_Challenge" Type="Self.Client_Challenge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="Booking_ID" />
+            </Principal>
+            <Dependent Role="Client_Challenge">
+              <PropertyRef Name="Booking_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subscript__Booki__2FCF1A8A">
+          <End Role="Booking" Type="Self.Booking" Multiplicity="0..1" />
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="Booking_ID" />
+            </Principal>
+            <Dependent Role="Subscription">
+              <PropertyRef Name="Booking_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Weight__Booking___1DB06A4F">
+          <End Role="Booking" Type="Self.Booking" Multiplicity="0..1" />
+          <End Role="Weight" Type="Self.Weight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="Booking_ID" />
+            </Principal>
+            <Dependent Role="Weight">
+              <PropertyRef Name="Booking_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___Booki__123EB7A3">
+          <End Role="Booking_Slot" Type="Self.Booking_Slot" Multiplicity="1" />
+          <End Role="Employee_Slot" Type="Self.Employee_Slot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking_Slot">
+              <PropertyRef Name="Booking_Slot_ID" />
+            </Principal>
+            <Dependent Role="Employee_Slot">
+              <PropertyRef Name="Booking_Slot_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Challenge__Chall__5EBF139D">
+          <End Role="Challenge_Status" Type="Self.Challenge_Status" Multiplicity="0..1" />
+          <End Role="Challenge" Type="Self.Challenge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Challenge_Status">
+              <PropertyRef Name="Challenge_Status_ID" />
+            </Principal>
+            <Dependent Role="Challenge">
+              <PropertyRef Name="Challenge_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Challenge__Chall__5FB337D6">
+          <End Role="Challenge_Type" Type="Self.Challenge_Type" Multiplicity="0..1" />
+          <End Role="Challenge" Type="Self.Challenge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Challenge_Type">
+              <PropertyRef Name="Challenge_Type_ID" />
+            </Principal>
+            <Dependent Role="Challenge">
+              <PropertyRef Name="Challenge_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Challenge__Chall__628FA481">
+          <End Role="Challenge" Type="Self.Challenge" Multiplicity="1" />
+          <End Role="Challenge_Exercise_Plan" Type="Self.Challenge_Exercise_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Challenge">
+              <PropertyRef Name="Challenge_ID" />
+            </Principal>
+            <Dependent Role="Challenge_Exercise_Plan">
+              <PropertyRef Name="Challenge_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_Ch__Chall__2180FB33">
+          <End Role="Challenge" Type="Self.Challenge" Multiplicity="1" />
+          <End Role="Client_Challenge" Type="Self.Client_Challenge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Challenge">
+              <PropertyRef Name="Challenge_ID" />
+            </Principal>
+            <Dependent Role="Client_Challenge">
+              <PropertyRef Name="Challenge_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Challenge__Exerc__6383C8BA">
+          <End Role="Exercise_Plan" Type="Self.Exercise_Plan" Multiplicity="1" />
+          <End Role="Challenge_Exercise_Plan" Type="Self.Challenge_Exercise_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise_Plan">
+              <PropertyRef Name="Exercise_Plan_ID" />
+            </Principal>
+            <Dependent Role="Challenge_Exercise_Plan">
+              <PropertyRef Name="Exercise_Plan_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_Ch__Chal___22751F6C">
+          <End Role="Challenge_Pay_Status" Type="Self.Challenge_Pay_Status" Multiplicity="0..1" />
+          <End Role="Client_Challenge" Type="Self.Client_Challenge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Challenge_Pay_Status">
+              <PropertyRef Name="Chal_Pay_Status_ID" />
+            </Principal>
+            <Dependent Role="Client_Challenge">
+              <PropertyRef Name="Chal_Pay_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Challenge__Clien__2645B050">
+          <End Role="Client_Challenge" Type="Self.Client_Challenge" Multiplicity="1" />
+          <End Role="Challenge_Payment" Type="Self.Challenge_Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client_Challenge">
+              <PropertyRef Name="Client_Challenge_ID" />
+            </Principal>
+            <Dependent Role="Challenge_Payment">
+              <PropertyRef Name="Client_Challenge_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client__Client_A__778AC167">
+          <End Role="Client_Account_Status" Type="Self.Client_Account_Status" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client_Account_Status">
+              <PropertyRef Name="Client_Acc_Stat_ID" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="Client_Acc_Stat_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client__Gender_I__797309D9">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Gender_ID" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="Gender_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client__User_ID__787EE5A0">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_Ch__Clien__208CD6FA">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Client_Challenge" Type="Self.Client_Challenge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Client_ID" />
+            </Principal>
+            <Dependent Role="Client_Challenge">
+              <PropertyRef Name="Client_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_In__Clien__3A4CA8FD">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Client_Injury" Type="Self.Client_Injury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Client_ID" />
+            </Principal>
+            <Dependent Role="Client_Injury">
+              <PropertyRef Name="Client_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_Pl__Clien__7E37BEF6">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Client_Plan" Type="Self.Client_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Client_ID" />
+            </Principal>
+            <Dependent Role="Client_Plan">
+              <PropertyRef Name="Client_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payment__Client___02FC7413">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Client_ID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="Client_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subscript__Clien__2EDAF651">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Client_ID" />
+            </Principal>
+            <Dependent Role="Subscription">
+              <PropertyRef Name="Client_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_In__Injur__3B40CD36">
+          <End Role="Injury" Type="Self.Injury" Multiplicity="1" />
+          <End Role="Client_Injury" Type="Self.Client_Injury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Injury">
+              <PropertyRef Name="Injury_ID" />
+            </Principal>
+            <Dependent Role="Client_Injury">
+              <PropertyRef Name="Injury_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_Pl__Exerc__7F2BE32F">
+          <End Role="Exercise_Plan" Type="Self.Exercise_Plan" Multiplicity="1" />
+          <End Role="Client_Plan" Type="Self.Client_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise_Plan">
+              <PropertyRef Name="Exercise_Plan_ID" />
+            </Principal>
+            <Dependent Role="Client_Plan">
+              <PropertyRef Name="Exercise_Plan_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_Pl__Payme__00200768">
+          <End Role="Payment_Status" Type="Self.Payment_Status" Multiplicity="0..1" />
+          <End Role="Client_Plan" Type="Self.Client_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment_Status">
+              <PropertyRef Name="Payment_Status_ID" />
+            </Principal>
+            <Dependent Role="Client_Plan">
+              <PropertyRef Name="Payment_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Exercise___Day_I__3F466844">
+          <End Role="Day" Type="Self.Day" Multiplicity="1" />
+          <End Role="Exercise_Plan_Day" Type="Self.Exercise_Plan_Day" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Day">
+              <PropertyRef Name="Day_ID" />
+            </Principal>
+            <Dependent Role="Exercise_Plan_Day">
+              <PropertyRef Name="Day_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Day_Worko__Exerc__5629CD9C">
+          <End Role="Exercise_Plan_Day" Type="Self.Exercise_Plan_Day" Multiplicity="1" />
+          <End Role="Day_Workout" Type="Self.Day_Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise_Plan_Day">
+              <PropertyRef Name="Exercise_Plan_Day_ID" />
+            </Principal>
+            <Dependent Role="Day_Workout">
+              <PropertyRef Name="Exercise_Plan_Day_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Day_Worko__Worko__5535A963">
+          <End Role="Workout_Set" Type="Self.Workout_Set" Multiplicity="1" />
+          <End Role="Day_Workout" Type="Self.Day_Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workout_Set">
+              <PropertyRef Name="Workout_Set_ID" />
+            </Principal>
+            <Dependent Role="Day_Workout">
+              <PropertyRef Name="Workout_Set_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___Emplo__114A936A">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Employee_Slot" Type="Self.Employee_Slot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Employee_ID" />
+            </Principal>
+            <Dependent Role="Employee_Slot">
+              <PropertyRef Name="Employee_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__Employ__0A9D95DB">
+          <End Role="Employee_Type" Type="Self.Employee_Type" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_Type">
+              <PropertyRef Name="Employee_Type_ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Employee_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__Gender__0C85DE4D">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Gender_ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Gender_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__User_I__0B91BA14">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Exercise___Exerc__4D94879B">
+          <End Role="Exercise" Type="Self.Exercise" Multiplicity="1" />
+          <End Role="Exercise_Set" Type="Self.Exercise_Set" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise">
+              <PropertyRef Name="Exercise_ID" />
+            </Principal>
+            <Dependent Role="Exercise_Set">
+              <PropertyRef Name="Exercise_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Exercise__Exerci__47DBAE45">
+          <End Role="Exercise_Type" Type="Self.Exercise_Type" Multiplicity="1" />
+          <End Role="Exercise" Type="Self.Exercise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise_Type">
+              <PropertyRef Name="Exercise_Type_ID" />
+            </Principal>
+            <Dependent Role="Exercise">
+              <PropertyRef Name="Exercise_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Exercise__Exerci__48CFD27E">
+          <End Role="Exercise_Body_Type" Type="Self.Exercise_Body_Type" Multiplicity="1" />
+          <End Role="Exercise" Type="Self.Exercise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise_Body_Type">
+              <PropertyRef Name="Exercise_Body_Type_ID" />
+            </Principal>
+            <Dependent Role="Exercise">
+              <PropertyRef Name="Exercise_Body_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Exercise___Exerc__398D8EEE">
+          <End Role="Exercise_Plan_Type" Type="Self.Exercise_Plan_Type" Multiplicity="0..1" />
+          <End Role="Exercise_Plan" Type="Self.Exercise_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise_Plan_Type">
+              <PropertyRef Name="Exercise_Plan_Type_ID" />
+            </Principal>
+            <Dependent Role="Exercise_Plan">
+              <PropertyRef Name="Exercise_Plan_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Exercise___Exerc__3E52440B">
+          <End Role="Exercise_Plan" Type="Self.Exercise_Plan" Multiplicity="1" />
+          <End Role="Exercise_Plan_Day" Type="Self.Exercise_Plan_Day" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise_Plan">
+              <PropertyRef Name="Exercise_Plan_ID" />
+            </Principal>
+            <Dependent Role="Exercise_Plan_Day">
+              <PropertyRef Name="Exercise_Plan_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payment__Exercis__03F0984C">
+          <End Role="Exercise_Plan" Type="Self.Exercise_Plan" Multiplicity="0..1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise_Plan">
+              <PropertyRef Name="Exercise_Plan_ID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="Exercise_Plan_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subscript__Exerc__3F115E1A">
+          <End Role="Exercise_Plan" Type="Self.Exercise_Plan" Multiplicity="1" />
+          <End Role="Subscription_Exercise_Plan" Type="Self.Subscription_Exercise_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise_Plan">
+              <PropertyRef Name="Exercise_Plan_ID" />
+            </Principal>
+            <Dependent Role="Subscription_Exercise_Plan">
+              <PropertyRef Name="Exercise_Plan_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Exercise___Set_I__4E88ABD4">
+          <End Role="Set" Type="Self.Set" Multiplicity="1" />
+          <End Role="Exercise_Set" Type="Self.Exercise_Set" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Set">
+              <PropertyRef Name="Set_ID" />
+            </Principal>
+            <Dependent Role="Exercise_Set">
+              <PropertyRef Name="Set_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Workout_S__Exerc__52593CB8">
+          <End Role="Exercise_Set" Type="Self.Exercise_Set" Multiplicity="1" />
+          <End Role="Workout_Set" Type="Self.Workout_Set" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise_Set">
+              <PropertyRef Name="Exercise_Set_ID" />
+            </Principal>
+            <Dependent Role="Workout_Set">
+              <PropertyRef Name="Exercise_Set_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Injury__Injury_T__37703C52">
+          <End Role="Injury_Type" Type="Self.Injury_Type" Multiplicity="1" />
+          <End Role="Injury" Type="Self.Injury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Injury_Type">
+              <PropertyRef Name="Injury_Type_ID" />
+            </Principal>
+            <Dependent Role="Injury">
+              <PropertyRef Name="Injury_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subscript__Sub_S__2CF2ADDF">
+          <End Role="Subscription_Status" Type="Self.Subscription_Status" Multiplicity="0..1" />
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscription_Status">
+              <PropertyRef Name="Sub_Status_ID" />
+            </Principal>
+            <Dependent Role="Subscription">
+              <PropertyRef Name="Sub_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subscript__Sub_T__2DE6D218">
+          <End Role="Subscription_Type" Type="Self.Subscription_Type" Multiplicity="0..1" />
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscription_Type">
+              <PropertyRef Name="Sub_Type_ID" />
+            </Principal>
+            <Dependent Role="Subscription">
+              <PropertyRef Name="Sub_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subscript__Subsc__32AB8735">
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="1" />
+          <End Role="Subscription_Payment" Type="Self.Subscription_Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscription">
+              <PropertyRef Name="Subscription_ID" />
+            </Principal>
+            <Dependent Role="Subscription_Payment">
+              <PropertyRef Name="Subscription_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subscript__Subsc__3E1D39E1">
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="1" />
+          <End Role="Subscription_Exercise_Plan" Type="Self.Subscription_Exercise_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscription">
+              <PropertyRef Name="Subscription_ID" />
+            </Principal>
+            <Dependent Role="Subscription_Exercise_Plan">
+              <PropertyRef Name="Subscription_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User__User_Statu__72C60C4A">
+          <End Role="User_Status" Type="Self.User_Status" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_Status">
+              <PropertyRef Name="User_Status_ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="User_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Workout_S__Worko__5165187F">
+          <End Role="Workout" Type="Self.Workout" Multiplicity="1" />
+          <End Role="Workout_Set" Type="Self.Workout_Set" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workout">
+              <PropertyRef Name="Workout_ID" />
+            </Principal>
+            <Dependent Role="Workout_Set">
+              <PropertyRef Name="Workout_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="JessterFITdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Access_Functionality" EntityType="Self.Access_Functionality" />
+          <EntitySet Name="Access_Level" EntityType="Self.Access_Level" />
+          <EntitySet Name="Bookings" EntityType="Self.Booking" />
+          <EntitySet Name="Booking_Slot" EntityType="Self.Booking_Slot" />
+          <EntitySet Name="Booking_Status" EntityType="Self.Booking_Status" />
+          <EntitySet Name="Booking_Type" EntityType="Self.Booking_Type" />
+          <EntitySet Name="Challenges" EntityType="Self.Challenge" />
+          <EntitySet Name="Challenge_Exercise_Plan" EntityType="Self.Challenge_Exercise_Plan" />
+          <EntitySet Name="Challenge_Pay_Status" EntityType="Self.Challenge_Pay_Status" />
+          <EntitySet Name="Challenge_Payment" EntityType="Self.Challenge_Payment" />
+          <EntitySet Name="Challenge_Status" EntityType="Self.Challenge_Status" />
+          <EntitySet Name="Challenge_Type" EntityType="Self.Challenge_Type" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="Client_Account_Status" EntityType="Self.Client_Account_Status" />
+          <EntitySet Name="Client_Challenge" EntityType="Self.Client_Challenge" />
+          <EntitySet Name="Client_Injury" EntityType="Self.Client_Injury" />
+          <EntitySet Name="Client_Plan" EntityType="Self.Client_Plan" />
+          <EntitySet Name="Companies" EntityType="Self.Company" />
+          <EntitySet Name="Days" EntityType="Self.Day" />
+          <EntitySet Name="Day_Workout" EntityType="Self.Day_Workout" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Employee_Slot" EntityType="Self.Employee_Slot" />
+          <EntitySet Name="Employee_Type" EntityType="Self.Employee_Type" />
+          <EntitySet Name="Exercises" EntityType="Self.Exercise" />
+          <EntitySet Name="Exercise_Body_Type" EntityType="Self.Exercise_Body_Type" />
+          <EntitySet Name="Exercise_Plan" EntityType="Self.Exercise_Plan" />
+          <EntitySet Name="Exercise_Plan_Day" EntityType="Self.Exercise_Plan_Day" />
+          <EntitySet Name="Exercise_Plan_Type" EntityType="Self.Exercise_Plan_Type" />
+          <EntitySet Name="Exercise_Set" EntityType="Self.Exercise_Set" />
+          <EntitySet Name="Exercise_Type" EntityType="Self.Exercise_Type" />
+          <EntitySet Name="Functionalities" EntityType="Self.Functionality" />
+          <EntitySet Name="Genders" EntityType="Self.Gender" />
+          <EntitySet Name="Injuries" EntityType="Self.Injury" />
+          <EntitySet Name="Injury_Type" EntityType="Self.Injury_Type" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="Payment_Status" EntityType="Self.Payment_Status" />
+          <EntitySet Name="Sets" EntityType="Self.Set" />
+          <EntitySet Name="Subscriptions" EntityType="Self.Subscription" />
+          <EntitySet Name="Subscription_Exercise_Plan" EntityType="Self.Subscription_Exercise_Plan" />
+          <EntitySet Name="Subscription_Payment" EntityType="Self.Subscription_Payment" />
+          <EntitySet Name="Subscription_Status" EntityType="Self.Subscription_Status" />
+          <EntitySet Name="Subscription_Type" EntityType="Self.Subscription_Type" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="User_Status" EntityType="Self.User_Status" />
+          <EntitySet Name="Weights" EntityType="Self.Weight" />
+          <EntitySet Name="Workouts" EntityType="Self.Workout" />
+          <EntitySet Name="Workout_Set" EntityType="Self.Workout_Set" />
+          <AssociationSet Name="FK__Access_Fu__Acces__6C190EBB" Association="Self.FK__Access_Fu__Acces__6C190EBB">
+            <End Role="Access_Level" EntitySet="Access_Level" />
+            <End Role="Access_Functionality" EntitySet="Access_Functionality" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Access_Fu__Funct__6D0D32F4" Association="Self.FK__Access_Fu__Funct__6D0D32F4">
+            <End Role="Functionality" EntitySet="Functionalities" />
+            <End Role="Access_Functionality" EntitySet="Access_Functionality" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User__Access_Lev__71D1E811" Association="Self.FK__User__Access_Lev__71D1E811">
+            <End Role="Access_Level" EntitySet="Access_Level" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Booking__Booking__18EBB532" Association="Self.FK__Booking__Booking__18EBB532">
+            <End Role="Booking_Type" EntitySet="Booking_Type" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Booking__Booking__19DFD96B" Association="Self.FK__Booking__Booking__19DFD96B">
+            <End Role="Booking_Status" EntitySet="Booking_Status" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Booking__Employe__1AD3FDA4" Association="Self.FK__Booking__Employe__1AD3FDA4">
+            <End Role="Employee_Slot" EntitySet="Employee_Slot" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_Ch__Booki__236943A5" Association="Self.FK__Client_Ch__Booki__236943A5">
+            <End Role="Booking" EntitySet="Bookings" />
+            <End Role="Client_Challenge" EntitySet="Client_Challenge" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subscript__Booki__2FCF1A8A" Association="Self.FK__Subscript__Booki__2FCF1A8A">
+            <End Role="Booking" EntitySet="Bookings" />
+            <End Role="Subscription" EntitySet="Subscriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Weight__Booking___1DB06A4F" Association="Self.FK__Weight__Booking___1DB06A4F">
+            <End Role="Booking" EntitySet="Bookings" />
+            <End Role="Weight" EntitySet="Weights" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___Booki__123EB7A3" Association="Self.FK__Employee___Booki__123EB7A3">
+            <End Role="Booking_Slot" EntitySet="Booking_Slot" />
+            <End Role="Employee_Slot" EntitySet="Employee_Slot" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Challenge__Chall__5EBF139D" Association="Self.FK__Challenge__Chall__5EBF139D">
+            <End Role="Challenge_Status" EntitySet="Challenge_Status" />
+            <End Role="Challenge" EntitySet="Challenges" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Challenge__Chall__5FB337D6" Association="Self.FK__Challenge__Chall__5FB337D6">
+            <End Role="Challenge_Type" EntitySet="Challenge_Type" />
+            <End Role="Challenge" EntitySet="Challenges" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Challenge__Chall__628FA481" Association="Self.FK__Challenge__Chall__628FA481">
+            <End Role="Challenge" EntitySet="Challenges" />
+            <End Role="Challenge_Exercise_Plan" EntitySet="Challenge_Exercise_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_Ch__Chall__2180FB33" Association="Self.FK__Client_Ch__Chall__2180FB33">
+            <End Role="Challenge" EntitySet="Challenges" />
+            <End Role="Client_Challenge" EntitySet="Client_Challenge" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Challenge__Exerc__6383C8BA" Association="Self.FK__Challenge__Exerc__6383C8BA">
+            <End Role="Exercise_Plan" EntitySet="Exercise_Plan" />
+            <End Role="Challenge_Exercise_Plan" EntitySet="Challenge_Exercise_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_Ch__Chal___22751F6C" Association="Self.FK__Client_Ch__Chal___22751F6C">
+            <End Role="Challenge_Pay_Status" EntitySet="Challenge_Pay_Status" />
+            <End Role="Client_Challenge" EntitySet="Client_Challenge" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Challenge__Clien__2645B050" Association="Self.FK__Challenge__Clien__2645B050">
+            <End Role="Client_Challenge" EntitySet="Client_Challenge" />
+            <End Role="Challenge_Payment" EntitySet="Challenge_Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client__Client_A__778AC167" Association="Self.FK__Client__Client_A__778AC167">
+            <End Role="Client_Account_Status" EntitySet="Client_Account_Status" />
+            <End Role="Client" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client__Gender_I__797309D9" Association="Self.FK__Client__Gender_I__797309D9">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="Client" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client__User_ID__787EE5A0" Association="Self.FK__Client__User_ID__787EE5A0">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Client" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_Ch__Clien__208CD6FA" Association="Self.FK__Client_Ch__Clien__208CD6FA">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Client_Challenge" EntitySet="Client_Challenge" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_In__Clien__3A4CA8FD" Association="Self.FK__Client_In__Clien__3A4CA8FD">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Client_Injury" EntitySet="Client_Injury" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_Pl__Clien__7E37BEF6" Association="Self.FK__Client_Pl__Clien__7E37BEF6">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Client_Plan" EntitySet="Client_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__Client___02FC7413" Association="Self.FK__Payment__Client___02FC7413">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subscript__Clien__2EDAF651" Association="Self.FK__Subscript__Clien__2EDAF651">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Subscription" EntitySet="Subscriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_In__Injur__3B40CD36" Association="Self.FK__Client_In__Injur__3B40CD36">
+            <End Role="Injury" EntitySet="Injuries" />
+            <End Role="Client_Injury" EntitySet="Client_Injury" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_Pl__Exerc__7F2BE32F" Association="Self.FK__Client_Pl__Exerc__7F2BE32F">
+            <End Role="Exercise_Plan" EntitySet="Exercise_Plan" />
+            <End Role="Client_Plan" EntitySet="Client_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_Pl__Payme__00200768" Association="Self.FK__Client_Pl__Payme__00200768">
+            <End Role="Payment_Status" EntitySet="Payment_Status" />
+            <End Role="Client_Plan" EntitySet="Client_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Exercise___Day_I__3F466844" Association="Self.FK__Exercise___Day_I__3F466844">
+            <End Role="Day" EntitySet="Days" />
+            <End Role="Exercise_Plan_Day" EntitySet="Exercise_Plan_Day" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Day_Worko__Exerc__5629CD9C" Association="Self.FK__Day_Worko__Exerc__5629CD9C">
+            <End Role="Exercise_Plan_Day" EntitySet="Exercise_Plan_Day" />
+            <End Role="Day_Workout" EntitySet="Day_Workout" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Day_Worko__Worko__5535A963" Association="Self.FK__Day_Worko__Worko__5535A963">
+            <End Role="Workout_Set" EntitySet="Workout_Set" />
+            <End Role="Day_Workout" EntitySet="Day_Workout" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___Emplo__114A936A" Association="Self.FK__Employee___Emplo__114A936A">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Employee_Slot" EntitySet="Employee_Slot" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__Employ__0A9D95DB" Association="Self.FK__Employee__Employ__0A9D95DB">
+            <End Role="Employee_Type" EntitySet="Employee_Type" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__Gender__0C85DE4D" Association="Self.FK__Employee__Gender__0C85DE4D">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__User_I__0B91BA14" Association="Self.FK__Employee__User_I__0B91BA14">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Exercise___Exerc__4D94879B" Association="Self.FK__Exercise___Exerc__4D94879B">
+            <End Role="Exercise" EntitySet="Exercises" />
+            <End Role="Exercise_Set" EntitySet="Exercise_Set" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Exercise__Exerci__47DBAE45" Association="Self.FK__Exercise__Exerci__47DBAE45">
+            <End Role="Exercise_Type" EntitySet="Exercise_Type" />
+            <End Role="Exercise" EntitySet="Exercises" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Exercise__Exerci__48CFD27E" Association="Self.FK__Exercise__Exerci__48CFD27E">
+            <End Role="Exercise_Body_Type" EntitySet="Exercise_Body_Type" />
+            <End Role="Exercise" EntitySet="Exercises" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Exercise___Exerc__398D8EEE" Association="Self.FK__Exercise___Exerc__398D8EEE">
+            <End Role="Exercise_Plan_Type" EntitySet="Exercise_Plan_Type" />
+            <End Role="Exercise_Plan" EntitySet="Exercise_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Exercise___Exerc__3E52440B" Association="Self.FK__Exercise___Exerc__3E52440B">
+            <End Role="Exercise_Plan" EntitySet="Exercise_Plan" />
+            <End Role="Exercise_Plan_Day" EntitySet="Exercise_Plan_Day" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__Exercis__03F0984C" Association="Self.FK__Payment__Exercis__03F0984C">
+            <End Role="Exercise_Plan" EntitySet="Exercise_Plan" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subscript__Exerc__3F115E1A" Association="Self.FK__Subscript__Exerc__3F115E1A">
+            <End Role="Exercise_Plan" EntitySet="Exercise_Plan" />
+            <End Role="Subscription_Exercise_Plan" EntitySet="Subscription_Exercise_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Exercise___Set_I__4E88ABD4" Association="Self.FK__Exercise___Set_I__4E88ABD4">
+            <End Role="Set" EntitySet="Sets" />
+            <End Role="Exercise_Set" EntitySet="Exercise_Set" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Workout_S__Exerc__52593CB8" Association="Self.FK__Workout_S__Exerc__52593CB8">
+            <End Role="Exercise_Set" EntitySet="Exercise_Set" />
+            <End Role="Workout_Set" EntitySet="Workout_Set" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Injury__Injury_T__37703C52" Association="Self.FK__Injury__Injury_T__37703C52">
+            <End Role="Injury_Type" EntitySet="Injury_Type" />
+            <End Role="Injury" EntitySet="Injuries" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subscript__Sub_S__2CF2ADDF" Association="Self.FK__Subscript__Sub_S__2CF2ADDF">
+            <End Role="Subscription_Status" EntitySet="Subscription_Status" />
+            <End Role="Subscription" EntitySet="Subscriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subscript__Sub_T__2DE6D218" Association="Self.FK__Subscript__Sub_T__2DE6D218">
+            <End Role="Subscription_Type" EntitySet="Subscription_Type" />
+            <End Role="Subscription" EntitySet="Subscriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subscript__Subsc__32AB8735" Association="Self.FK__Subscript__Subsc__32AB8735">
+            <End Role="Subscription" EntitySet="Subscriptions" />
+            <End Role="Subscription_Payment" EntitySet="Subscription_Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subscript__Subsc__3E1D39E1" Association="Self.FK__Subscript__Subsc__3E1D39E1">
+            <End Role="Subscription" EntitySet="Subscriptions" />
+            <End Role="Subscription_Exercise_Plan" EntitySet="Subscription_Exercise_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User__User_Statu__72C60C4A" Association="Self.FK__User__User_Statu__72C60C4A">
+            <End Role="User_Status" EntitySet="User_Status" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Workout_S__Worko__5165187F" Association="Self.FK__Workout_S__Worko__5165187F">
+            <End Role="Workout" EntitySet="Workouts" />
+            <End Role="Workout_Set" EntitySet="Workout_Set" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="JessterFITdbModelStoreContainer" CdmEntityContainer="JessterFITdbEntities">
+          <EntitySetMapping Name="Access_Functionality">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Access_Functionality">
+              <MappingFragment StoreEntitySet="Access_Functionality">
+                <ScalarProperty Name="Access_Func_ID" ColumnName="Access_Func_ID" />
+                <ScalarProperty Name="Access_Level_ID" ColumnName="Access_Level_ID" />
+                <ScalarProperty Name="Functionality_ID" ColumnName="Functionality_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Access_Level">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Access_Level">
+              <MappingFragment StoreEntitySet="Access_Level">
+                <ScalarProperty Name="Access_Level_ID" ColumnName="Access_Level_ID" />
+                <ScalarProperty Name="Access_Level_Desc" ColumnName="Access_Level_Desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bookings">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Booking">
+              <MappingFragment StoreEntitySet="Booking">
+                <ScalarProperty Name="Booking_ID" ColumnName="Booking_ID" />
+                <ScalarProperty Name="Booking_Type_ID" ColumnName="Booking_Type_ID" />
+                <ScalarProperty Name="Booking_Status_ID" ColumnName="Booking_Status_ID" />
+                <ScalarProperty Name="Employee_Slot_ID" ColumnName="Employee_Slot_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Booking_Slot">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Booking_Slot">
+              <MappingFragment StoreEntitySet="Booking_Slot">
+                <ScalarProperty Name="Booking_Slot_ID" ColumnName="Booking_Slot_ID" />
+                <ScalarProperty Name="Booking_Slot_Date" ColumnName="Booking_Slot_Date" />
+                <ScalarProperty Name="Booking_Slot_Start" ColumnName="Booking_Slot_Start" />
+                <ScalarProperty Name="Booking_Slot_End" ColumnName="Booking_Slot_End" />
+                <ScalarProperty Name="Booking_Slot_Venue" ColumnName="Booking_Slot_Venue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Booking_Status">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Booking_Status">
+              <MappingFragment StoreEntitySet="Booking_Status">
+                <ScalarProperty Name="Booking_Status_ID" ColumnName="Booking_Status_ID" />
+                <ScalarProperty Name="Booking_Status_Desc" ColumnName="Booking_Status_Desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Booking_Type">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Booking_Type">
+              <MappingFragment StoreEntitySet="Booking_Type">
+                <ScalarProperty Name="Booking_Type_ID" ColumnName="Booking_Type_ID" />
+                <ScalarProperty Name="Booking_Type_Desc" ColumnName="Booking_Type_Desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Challenges">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Challenge">
+              <MappingFragment StoreEntitySet="Challenge">
+                <ScalarProperty Name="Challenge_ID" ColumnName="Challenge_ID" />
+                <ScalarProperty Name="Challenge_Start_Date" ColumnName="Challenge_Start_Date" />
+                <ScalarProperty Name="Challenge_End_Date" ColumnName="Challenge_End_Date" />
+                <ScalarProperty Name="Challenge_Amount" ColumnName="Challenge_Amount" />
+                <ScalarProperty Name="Challenge_Prize" ColumnName="Challenge_Prize" />
+                <ScalarProperty Name="Challenge_Status_ID" ColumnName="Challenge_Status_ID" />
+                <ScalarProperty Name="Challenge_Type_ID" ColumnName="Challenge_Type_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Challenge_Exercise_Plan">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Challenge_Exercise_Plan">
+              <MappingFragment StoreEntitySet="Challenge_Exercise_Plan">
+                <ScalarProperty Name="Challenge_ID" ColumnName="Challenge_ID" />
+                <ScalarProperty Name="Exercise_Plan_ID" ColumnName="Exercise_Plan_ID" />
+                <ScalarProperty Name="Challenge_Month_Number" ColumnName="Challenge_Month_Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Challenge_Pay_Status">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Challenge_Pay_Status">
+              <MappingFragment StoreEntitySet="Challenge_Pay_Status">
+                <ScalarProperty Name="Chal_Pay_Status_ID" ColumnName="Chal_Pay_Status_ID" />
+                <ScalarProperty Name="Chal_Pay_Status_Desc" ColumnName="Chal_Pay_Status_Desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Challenge_Payment">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Challenge_Payment">
+              <MappingFragment StoreEntitySet="Challenge_Payment">
+                <ScalarProperty Name="Challenge_Pay_ID" ColumnName="Challenge_Pay_ID" />
+                <ScalarProperty Name="Challenge_Pay_Date" ColumnName="Challenge_Pay_Date" />
+                <ScalarProperty Name="Challenge_Pay_Amount" ColumnName="Challenge_Pay_Amount" />
+                <ScalarProperty Name="Client_Challenge_ID" ColumnName="Client_Challenge_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Challenge_Status">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Challenge_Status">
+              <MappingFragment StoreEntitySet="Challenge_Status">
+                <ScalarProperty Name="Challenge_Status_ID" ColumnName="Challenge_Status_ID" />
+                <ScalarProperty Name="Challenge_Status_Desc" ColumnName="Challenge_Status_Desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Challenge_Type">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Challenge_Type">
+              <MappingFragment StoreEntitySet="Challenge_Type">
+                <ScalarProperty Name="Challenge_Type_ID" ColumnName="Challenge_Type_ID" />
+                <ScalarProperty Name="Challenge_Type_Desc" ColumnName="Challenge_Type_Desc" />
+                <ScalarProperty Name="Challenge_Details" ColumnName="Challenge_Details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
+                <ScalarProperty Name="Client_Surname" ColumnName="Client_Surname" />
+                <ScalarProperty Name="Client_Contact" ColumnName="Client_Contact" />
+                <ScalarProperty Name="Client_Height" ColumnName="Client_Height" />
+                <ScalarProperty Name="Date_of_Birth" ColumnName="Date_of_Birth" />
+                <ScalarProperty Name="Subscription_Balance" ColumnName="Subscription_Balance" />
+                <ScalarProperty Name="Client_Acc_Stat_ID" ColumnName="Client_Acc_Stat_ID" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Gender_ID" ColumnName="Gender_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client_Account_Status">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Client_Account_Status">
+              <MappingFragment StoreEntitySet="Client_Account_Status">
+                <ScalarProperty Name="Client_Acc_Stat_ID" ColumnName="Client_Acc_Stat_ID" />
+                <ScalarProperty Name="Client_Acc_Stat_Desc" ColumnName="Client_Acc_Stat_Desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client_Challenge">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Client_Challenge">
+              <MappingFragment StoreEntitySet="Client_Challenge">
+                <ScalarProperty Name="Client_Challenge_ID" ColumnName="Client_Challenge_ID" />
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+                <ScalarProperty Name="Challenge_ID" ColumnName="Challenge_ID" />
+                <ScalarProperty Name="Chal_Reference_Number" ColumnName="Chal_Reference_Number" />
+                <ScalarProperty Name="Chal_Pay_Status_ID" ColumnName="Chal_Pay_Status_ID" />
+                <ScalarProperty Name="Booking_ID" ColumnName="Booking_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client_Injury">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Client_Injury">
+              <MappingFragment StoreEntitySet="Client_Injury">
+                <ScalarProperty Name="Client_Injury_ID" ColumnName="Client_Injury_ID" />
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+                <ScalarProperty Name="Injury_ID" ColumnName="Injury_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client_Plan">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Client_Plan">
+              <MappingFragment StoreEntitySet="Client_Plan">
+                <ScalarProperty Name="Client_Plan_ID" ColumnName="Client_Plan_ID" />
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+                <ScalarProperty Name="Exercise_Plan_ID" ColumnName="Exercise_Plan_ID" />
+                <ScalarProperty Name="Plan_Reference_Number" ColumnName="Plan_Reference_Number" />
+                <ScalarProperty Name="Payment_Status_ID" ColumnName="Payment_Status_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+                <ScalarProperty Name="Company_Name" ColumnName="Company_Name" />
+                <ScalarProperty Name="Company_Address" ColumnName="Company_Address" />
+                <ScalarProperty Name="Company_Register_No" ColumnName="Company_Register_No" />
+                <ScalarProperty Name="Company_Contact" ColumnName="Company_Contact" />
+                <ScalarProperty Name="Account_Name" ColumnName="Account_Name" />
+                <ScalarProperty Name="Acount_Number" ColumnName="Acount_Number" />
+                <ScalarProperty Name="Account_Type" ColumnName="Account_Type" />
+                <ScalarProperty Name="Account_Branch" ColumnName="Account_Branch" />
+                <ScalarProperty Name="Account_Bramch_Code" ColumnName="Account_Bramch_Code" />
+                <ScalarProperty Name="Owner_Email" ColumnName="Owner_Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Days">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Day">
+              <MappingFragment StoreEntitySet="Day">
+                <ScalarProperty Name="Day_ID" ColumnName="Day_ID" />
+                <ScalarProperty Name="Day_Type" ColumnName="Day_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Day_Workout">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Day_Workout">
+              <MappingFragment StoreEntitySet="Day_Workout">
+                <ScalarProperty Name="Day_Workout_ID" ColumnName="Day Workout_ID" />
+                <ScalarProperty Name="Workout_Set_ID" ColumnName="Workout_Set_ID" />
+                <ScalarProperty Name="Exercise_Plan_Day_ID" ColumnName="Exercise_Plan_Day_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="Employee_Name" ColumnName="Employee_Name" />
+                <ScalarProperty Name="Employee_Surname" ColumnName="Employee_Surname" />
+                <ScalarProperty Name="Employee_Contact" ColumnName="Employee_Contact" />
+                <ScalarProperty Name="Employee_Birth_Date" ColumnName="Employee_Birth_Date" />
+                <ScalarProperty Name="Employee_Type_ID" ColumnName="Employee_Type_ID" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Gender_ID" ColumnName="Gender_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee_Slot">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Employee_Slot">
+              <MappingFragment StoreEntitySet="Employee_Slot">
+                <ScalarProperty Name="Employee_Slot_ID" ColumnName="Employee_Slot_ID" />
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="Booking_Slot_ID" ColumnName="Booking_Slot_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee_Type">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Employee_Type">
+              <MappingFragment StoreEntitySet="Employee_Type">
+                <ScalarProperty Name="Employee_Type_ID" ColumnName="Employee_Type_ID" />
+                <ScalarProperty Name="Employee_Type_Desc" ColumnName="Employee_Type_Desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exercises">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Exercise">
+              <MappingFragment StoreEntitySet="Exercise">
+                <ScalarProperty Name="Exercise_ID" ColumnName="Exercise_ID" />
+                <ScalarProperty Name="Exercise_Name" ColumnName="Exercise_Name" />
+                <ScalarProperty Name="Exercise_Description" ColumnName="Exercise_Description" />
+                <ScalarProperty Name="Exercise_Type_ID" ColumnName="Exercise_Type_ID" />
+                <ScalarProperty Name="Exercise_Body_Type_ID" ColumnName="Exercise_Body_Type_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exercise_Body_Type">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Exercise_Body_Type">
+              <MappingFragment StoreEntitySet="Exercise_Body_Type">
+                <ScalarProperty Name="Exercise_Body_Type_ID" ColumnName="Exercise_Body_Type_ID" />
+                <ScalarProperty Name="Exercise_Body_Desc" ColumnName="Exercise_Body_Desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exercise_Plan">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Exercise_Plan">
+              <MappingFragment StoreEntitySet="Exercise_Plan">
+                <ScalarProperty Name="Exercise_Plan_ID" ColumnName="Exercise_Plan_ID" />
+                <ScalarProperty Name="Exercise_Plan_Name" ColumnName="Exercise_Plan_Name" />
+                <ScalarProperty Name="Exercise_Plan_Type_ID" ColumnName="Exercise_Plan_Type_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exercise_Plan_Day">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Exercise_Plan_Day">
+              <MappingFragment StoreEntitySet="Exercise_Plan_Day">
+                <ScalarProperty Name="Exercise_Plan_Day_ID" ColumnName="Exercise_Plan_Day_ID" />
+                <ScalarProperty Name="Exercise_Plan_ID" ColumnName="Exercise_Plan_ID" />
+                <ScalarProperty Name="Day_ID" ColumnName="Day_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exercise_Plan_Type">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Exercise_Plan_Type">
+              <MappingFragment StoreEntitySet="Exercise_Plan_Type">
+                <ScalarProperty Name="Exercise_Plan_Type_ID" ColumnName="Exercise_Plan_Type_ID" />
+                <ScalarProperty Name="Plan_Type_Description" ColumnName="Plan_Type_Description" />
+                <ScalarProperty Name="Plan_Type_Price" ColumnName="Plan_Type_Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exercise_Set">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Exercise_Set">
+              <MappingFragment StoreEntitySet="Exercise_Set">
+                <ScalarProperty Name="Exercise_Set_ID" ColumnName="Exercise_Set_ID" />
+                <ScalarProperty Name="REP" ColumnName="REP" />
+                <ScalarProperty Name="Exercise_ID" ColumnName="Exercise_ID" />
+                <ScalarProperty Name="Set_ID" ColumnName="Set_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exercise_Type">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Exercise_Type">
+              <MappingFragment StoreEntitySet="Exercise_Type">
+                <ScalarProperty Name="Exercise_Type_ID" ColumnName="Exercise_Type_ID" />
+                <ScalarProperty Name="Exercise_Type_Description" ColumnName="Exercise_Type_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Functionalities">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Functionality">
+              <MappingFragment StoreEntitySet="Functionality">
+                <ScalarProperty Name="Functionality_ID" ColumnName="Functionality_ID" />
+                <ScalarProperty Name="Functionality_Desc" ColumnName="Functionality_Desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Gender_ID" ColumnName="Gender_ID" />
+                <ScalarProperty Name="Gender_Description" ColumnName="Gender_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Injuries">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Injury">
+              <MappingFragment StoreEntitySet="Injury">
+                <ScalarProperty Name="Injury_ID" ColumnName="Injury_ID" />
+                <ScalarProperty Name="Injury_Description" ColumnName="Injury_Description" />
+                <ScalarProperty Name="Injury_Type_ID" ColumnName="Injury_Type_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Injury_Type">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Injury_Type">
+              <MappingFragment StoreEntitySet="Injury_Type">
+                <ScalarProperty Name="Injury_Type_ID" ColumnName="Injury_Type_ID" />
+                <ScalarProperty Name="Injury_Type_Desc" ColumnName="Injury_Type_Desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="Payment_ID" ColumnName="Payment_ID" />
+                <ScalarProperty Name="Payment_Date" ColumnName="Payment_Date" />
+                <ScalarProperty Name="Payment_Amount" ColumnName="Payment_Amount" />
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+                <ScalarProperty Name="Exercise_Plan_ID" ColumnName="Exercise_Plan_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payment_Status">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Payment_Status">
+              <MappingFragment StoreEntitySet="Payment_Status">
+                <ScalarProperty Name="Payment_Status_ID" ColumnName="Payment_Status_ID" />
+                <ScalarProperty Name="Payment_Status_Desc" ColumnName="Payment_Status_Desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sets">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Set">
+              <MappingFragment StoreEntitySet="Set">
+                <ScalarProperty Name="Set_ID" ColumnName="Set_ID" />
+                <ScalarProperty Name="Set_Name" ColumnName="Set_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subscriptions">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Subscription">
+              <MappingFragment StoreEntitySet="Subscription">
+                <ScalarProperty Name="Subscription_ID" ColumnName="Subscription_ID" />
+                <ScalarProperty Name="Subscription_Start_Date" ColumnName="Subscription_Start_Date" />
+                <ScalarProperty Name="Sub_Reference_Number" ColumnName="Sub_Reference_Number" />
+                <ScalarProperty Name="Subscription_End_Date" ColumnName="Subscription_End_Date" />
+                <ScalarProperty Name="Sub_Status_ID" ColumnName="Sub_Status_ID" />
+                <ScalarProperty Name="Sub_Type_ID" ColumnName="Sub_Type_ID" />
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+                <ScalarProperty Name="Booking_ID" ColumnName="Booking_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subscription_Exercise_Plan">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Subscription_Exercise_Plan">
+              <MappingFragment StoreEntitySet="Subscription_Exercise_Plan">
+                <ScalarProperty Name="Subscription_Plan_ID" ColumnName="Subscription_Plan_ID" />
+                <ScalarProperty Name="Subscription_ID" ColumnName="Subscription_ID" />
+                <ScalarProperty Name="Exercise_Plan_ID" ColumnName="Exercise_Plan_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subscription_Payment">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Subscription_Payment">
+              <MappingFragment StoreEntitySet="Subscription_Payment">
+                <ScalarProperty Name="Sub_Pay_ID" ColumnName="Sub_Pay_ID" />
+                <ScalarProperty Name="Sub_Pay_Date" ColumnName="Sub_Pay_Date" />
+                <ScalarProperty Name="Sub_Pay_Amount" ColumnName="Sub_Pay_Amount" />
+                <ScalarProperty Name="Subscription_ID" ColumnName="Subscription_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subscription_Status">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Subscription_Status">
+              <MappingFragment StoreEntitySet="Subscription_Status">
+                <ScalarProperty Name="Sub_Status_ID" ColumnName="Sub_Status_ID" />
+                <ScalarProperty Name="Sub_Status_Desc" ColumnName="Sub_Status_Desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subscription_Type">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Subscription_Type">
+              <MappingFragment StoreEntitySet="Subscription_Type">
+                <ScalarProperty Name="Sub_Type_ID" ColumnName="Sub_Type_ID" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="Weight_Amount" ColumnName="Weight_Amount" />
+                <ScalarProperty Name="Discount_Percent" ColumnName="Discount_Percent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="JessterFITdbModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Access_Level_ID" ColumnName="Access_Level_ID" />
+                <ScalarProperty Name="User_Status_ID" ColumnName="User_Status_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Status">
+            <EntityTypeMapping TypeName="JessterFITdbModel.User_Status">
+              <MappingFragment StoreEntitySet="User_Status">
+                <ScalarProperty Name="User_Status_ID" ColumnName="User_Status_ID" />
+                <ScalarProperty Name="User_Status_Desc" ColumnName="User_Status_Desc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Weights">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Weight">
+              <MappingFragment StoreEntitySet="Weight">
+                <ScalarProperty Name="Weight_ID" ColumnName="Weight_ID" />
+                <ScalarProperty Name="Weight_Amount" ColumnName="Weight_Amount" />
+                <ScalarProperty Name="Booking_ID" ColumnName="Booking_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Workouts">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Workout">
+              <MappingFragment StoreEntitySet="Workout">
+                <ScalarProperty Name="Workout_ID" ColumnName="Workout_ID" />
+                <ScalarProperty Name="Workout_Number" ColumnName="Workout_Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Workout_Set">
+            <EntityTypeMapping TypeName="JessterFITdbModel.Workout_Set">
+              <MappingFragment StoreEntitySet="Workout_Set">
+                <ScalarProperty Name="Workout_Set_ID" ColumnName="Workout_Set_ID" />
+                <ScalarProperty Name="Workout_ID" ColumnName="Workout_ID" />
+                <ScalarProperty Name="Exercise_Set_ID" ColumnName="Exercise_Set_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
